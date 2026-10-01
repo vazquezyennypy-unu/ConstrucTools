@@ -1,0 +1,1697 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ConstrucTools</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- =========================
+         SELECCIÓN DE ROL
+    ========================== -->
+    <section id="roleScreen" class="auth-screen">
+        <div class="auth-box">
+
+            <div class="logo-area">
+                <h1>ConstrucTools</h1>
+                <p>Tu obra, mejor organizada.</p>
+            </div>
+
+            <h2>Seleccioná tu rol</h2>
+
+            <p class="auth-description">
+                Elegí el tipo de usuario que mejor representa tu actividad.
+            </p>
+
+            <div class="role-grid">
+
+                <button class="role-card" onclick="selectRole('Arquitecto/a')">
+                    <strong>Arquitecto/a</strong>
+                    <span>Diseño y planificación de obras</span>
+                </button>
+
+                <button class="role-card" onclick="selectRole('Ingeniero/a')">
+                    <strong>Ingeniero/a</strong>
+                    <span>Cálculos y gestión de proyectos</span>
+                </button>
+
+                <button class="role-card" onclick="selectRole('Albañil')">
+                    <strong>Albañil</strong>
+                    <span>Trabajo y seguimiento de obra</span>
+                </button>
+
+                <button class="role-card" onclick="selectRole('Estudiante')">
+                    <strong>Estudiante</strong>
+                    <span>Organización de actividades académicas</span>
+                </button>
+
+                <button class="role-card" onclick="selectRole('Otro')">
+                    <strong>Otro</strong>
+                    <span>Otra actividad relacionada</span>
+                </button>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- =========================
+         LOGIN
+    ========================== -->
+    <section id="loginScreen" class="auth-screen hidden">
+
+        <div class="auth-box login-box">
+
+            <div class="logo-area">
+                <h1>ConstrucTools</h1>
+                <p>Herramientas para estudiantes y profesionales de construcción.</p>
+            </div>
+
+            <h2>Iniciar sesión</h2>
+
+            <form id="loginForm">
+
+                <label for="loginEmail">Correo electrónico</label>
+
+                <input
+                    type="email"
+                    id="loginEmail"
+                    placeholder="correo@ejemplo.com"
+                    required
+                >
+
+                <label for="loginPassword">Contraseña</label>
+
+                <input
+                    type="password"
+                    id="loginPassword"
+                    placeholder="Contraseña"
+                    required
+                >
+
+                <button type="submit" class="primary-button">
+                    Iniciar sesión
+                </button>
+
+            </form>
+
+            <p class="switch-auth">
+                ¿No tenés una cuenta?
+
+                <button type="button" onclick="showRegister()">
+                    Registrate
+                </button>
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         REGISTRO
+    ========================== -->
+    <section id="registerScreen" class="auth-screen hidden">
+
+        <div class="auth-box">
+
+            <div class="logo-area">
+                <h1>ConstrucTools</h1>
+                <p>Creá tu cuenta</p>
+            </div>
+
+            <h2>Registrarse</h2>
+
+            <form id="registerForm">
+
+                <label for="registerName">
+                    Nombre completo
+                </label>
+
+                <input
+                    type="text"
+                    id="registerName"
+                    placeholder="Tu nombre"
+                    required
+                >
+
+                <label for="registerEmail">
+                    Correo electrónico
+                </label>
+
+                <input
+                    type="email"
+                    id="registerEmail"
+                    placeholder="correo@ejemplo.com"
+                    required
+                >
+
+                <label for="registerPassword">
+                    Contraseña
+                </label>
+
+                <input
+                    type="password"
+                    id="registerPassword"
+                    placeholder="Contraseña"
+                    required
+                >
+
+                <label for="registerProject">
+                    Proyecto
+                </label>
+
+                <input
+                    type="text"
+                    id="registerProject"
+                    placeholder="Nombre de tu proyecto"
+                >
+
+                <button type="submit" class="primary-button">
+                    Crear cuenta
+                </button>
+
+            </form>
+
+            <p class="switch-auth">
+                ¿Ya tenés una cuenta?
+
+                <button type="button" onclick="showLogin()">
+                    Iniciar sesión
+                </button>
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         APLICACIÓN
+    ========================== -->
+    <div id="app" class="app hidden">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+
+            <div class="sidebar-logo">
+                <h1>ConstrucTools</h1>
+                <p>Tu obra, mejor organizada.</p>
+            </div>
+
+            <nav class="menu">
+
+                <button class="menu-item active"
+                    onclick="showSection('inicio', this)">
+                    Inicio
+                </button>
+
+                <button class="menu-item"
+                    onclick="showSection('obras', this)">
+                    Mis obras
+                </button>
+
+                <button class="menu-item"
+                    onclick="showSection('notas', this)">
+                    Notas y reportes
+                </button>
+
+                <button class="menu-item"
+                    onclick="showSection('calculadora', this)">
+                    Calculadora
+                </button>
+
+                <button class="menu-item"
+                    onclick="showSection('calendario', this)">
+                    Calendario
+                </button>
+
+                <button class="menu-item"
+                    onclick="showSection('documentos', this)">
+                    Documentos
+                </button>
+
+                <button class="menu-item"
+                    onclick="showSection('materiales', this)">
+                    Materiales
+                </button>
+
+                <button class="menu-item"
+                    onclick="showSection('tareas', this)">
+                    Tareas
+                </button>
+
+                <button class="menu-item"
+                    onclick="showSection('cuenta', this)">
+                    Mi cuenta
+                </button>
+
+            </nav>
+
+            <button class="logout-button" onclick="logout()">
+                Cerrar sesión
+            </button>
+
+        </aside>
+
+
+        <!-- CONTENIDO -->
+        <main class="main-content">
+
+            <!-- TOPBAR -->
+            <header class="topbar">
+
+                <div>
+                    <h2 id="pageTitle">Inicio</h2>
+                    <p id="welcomeText">
+                        Bienvenido a ConstrucTools
+                    </p>
+                </div>
+
+                <div class="topbar-right">
+
+                    <input
+                        type="search"
+                        id="globalSearch"
+                        placeholder="Buscar..."
+                        oninput="globalSearch()"
+                    >
+
+                    <button
+                        class="profile-button"
+                        onclick="showSection('cuenta')"
+                    >
+                        <span id="profileName">
+                            Usuario
+                        </span>
+                    </button>
+
+                </div>
+
+            </header>
+
+
+            <!-- =========================
+                 INICIO
+            ========================== -->
+            <section id="inicio"
+                class="content-section active-section">
+
+                <div class="hero-card">
+
+                    <div class="hero-content">
+
+                        <span class="small-label">
+                            CONSTRUC TOOLS
+                        </span>
+
+                        <h1>
+                            Tu obra, mejor organizada.
+                        </h1>
+
+                        <p>
+                            Centralizá tus proyectos, materiales,
+                            tareas, documentos y actividades
+                            en un solo lugar.
+                        </p>
+
+                        <div class="hero-actions">
+
+                            <button
+                                class="primary-button hero-button"
+                                onclick="showSection('obras')"
+                            >
+                                Ver mis obras
+                            </button>
+
+                            <button
+                                class="hero-secondary-button"
+                                onclick="showSection('calculadora')"
+                            >
+                                Abrir calculadora
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                    <div class="hero-decoration">
+                        <div class="hero-decoration-box">
+                            <strong>CT</strong>
+                            <span>Organización de obra</span>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="stats-grid">
+
+                    <div class="stat-card">
+                        <span>Obras</span>
+                        <strong id="statObras">0</strong>
+                        <small>Proyectos registrados</small>
+                    </div>
+
+                    <div class="stat-card">
+                        <span>Tareas pendientes</span>
+                        <strong id="statTareas">0</strong>
+                        <small>Actividades por realizar</small>
+                    </div>
+
+                    <div class="stat-card">
+                        <span>Materiales</span>
+                        <strong id="statMateriales">0</strong>
+                        <small>Materiales registrados</small>
+                    </div>
+
+                    <div class="stat-card">
+                        <span>Documentos</span>
+                        <strong id="statDocumentos">0</strong>
+                        <small>Archivos organizados</small>
+                    </div>
+
+                </div>
+
+
+                <div class="dashboard-grid">
+
+                    <div class="panel dashboard-panel">
+
+                        <div class="panel-header">
+
+                            <div>
+                                <span class="panel-kicker">
+                                    AGENDA
+                                </span>
+
+                                <h3>
+                                    Próximas actividades
+                                </h3>
+                            </div>
+
+                            <button
+                                class="panel-link"
+                                onclick="showSection('calendario')"
+                            >
+                                Ver calendario
+                            </button>
+
+                        </div>
+
+                        <div
+                            id="dashboardEvents"
+                            class="list-container"
+                        >
+                            <p class="empty-message">
+                                No hay actividades registradas.
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="panel dashboard-panel">
+
+                        <div class="panel-header">
+
+                            <div>
+                                <span class="panel-kicker">
+                                    ORGANIZACIÓN
+                                </span>
+
+                                <h3>
+                                    Tareas pendientes
+                                </h3>
+                            </div>
+
+                            <button
+                                class="panel-link"
+                                onclick="showSection('tareas')"
+                            >
+                                Ver tareas
+                            </button>
+
+                        </div>
+
+                        <div
+                            id="dashboardTasks"
+                            class="list-container"
+                        >
+                            <p class="empty-message">
+                                No hay tareas pendientes.
+                            </p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =========================
+                 OBRAS
+            ========================== -->
+            <section id="obras" class="content-section">
+
+                <div class="section-heading">
+
+                    <div>
+                        <span class="section-kicker">
+                            PROYECTOS
+                        </span>
+
+                        <h2>Mis obras</h2>
+
+                        <p>
+                            Organizá tus proyectos y obras.
+                        </p>
+                    </div>
+
+                    <button
+                        class="primary-button"
+                        onclick="openModal('obraModal')"
+                    >
+                        Nueva obra
+                    </button>
+
+                </div>
+
+                <div
+                    id="worksContainer"
+                    class="cards-grid"
+                ></div>
+
+            </section>
+
+
+            <!-- =========================
+                 NOTAS
+            ========================== -->
+            <section id="notas" class="content-section">
+
+                <div class="section-heading">
+
+                    <div>
+                        <span class="section-kicker">
+                            SEGUIMIENTO
+                        </span>
+
+                        <h2>Notas y reportes</h2>
+
+                        <p>
+                            Registrá avances, pendientes,
+                            observaciones y dificultades.
+                        </p>
+                    </div>
+
+                    <button
+                        class="primary-button"
+                        onclick="openModal('noteModal')"
+                    >
+                        Nueva nota
+                    </button>
+
+                </div>
+
+                <div
+                    id="notesContainer"
+                    class="notes-container"
+                ></div>
+
+            </section>
+
+
+            <!-- =========================
+                 CALCULADORA
+            ========================== -->
+            <section id="calculadora" class="content-section">
+
+                <div class="section-heading">
+
+                    <div>
+                        <span class="section-kicker">
+                            HERRAMIENTAS
+                        </span>
+
+                        <h2>Calculadora</h2>
+
+                        <p>
+                            Realizá cálculos generales y
+                            relacionados con construcción.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="calculator-tabs">
+
+                    <button
+                        class="calculator-tab active"
+                        onclick="showCalculatorTab('normal', this)"
+                    >
+                        Calculadora normal
+                    </button>
+
+                    <button
+                        class="calculator-tab"
+                        onclick="showCalculatorTab('scientific', this)"
+                    >
+                        Científica
+                    </button>
+
+                    <button
+                        class="calculator-tab"
+                        onclick="showCalculatorTab('conversion', this)"
+                    >
+                        Mediciones
+                    </button>
+
+                </div>
+
+
+                <div
+                    id="normalCalculator"
+                    class="calculator-panel"
+                >
+
+                    <div class="calculator-box">
+
+                        <input
+                            type="text"
+                            id="normalDisplay"
+                            class="calculator-display"
+                            readonly
+                            value="0"
+                        >
+
+                        <div class="calculator-buttons">
+
+                            <button onclick="clearNormal()">C</button>
+                            <button onclick="deleteNormal()">⌫</button>
+                            <button onclick="appendNormal('/')">÷</button>
+                            <button onclick="appendNormal('*')">×</button>
+
+                            <button onclick="appendNormal('7')">7</button>
+                            <button onclick="appendNormal('8')">8</button>
+                            <button onclick="appendNormal('9')">9</button>
+                            <button onclick="appendNormal('-')">−</button>
+
+                            <button onclick="appendNormal('4')">4</button>
+                            <button onclick="appendNormal('5')">5</button>
+                            <button onclick="appendNormal('6')">6</button>
+                            <button onclick="appendNormal('+')">+</button>
+
+                            <button onclick="appendNormal('1')">1</button>
+                            <button onclick="appendNormal('2')">2</button>
+                            <button onclick="appendNormal('3')">3</button>
+
+                            <button
+                                onclick="calculateNormal()"
+                                class="equals-button"
+                            >
+                                =
+                            </button>
+
+                            <button
+                                onclick="appendNormal('0')"
+                                class="zero-button"
+                            >
+                                0
+                            </button>
+
+                            <button onclick="appendNormal('.')">
+                                .
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    id="scientificCalculator"
+                    class="calculator-panel hidden"
+                >
+
+                    <div class="calculator-box scientific-box">
+
+                        <input
+                            type="text"
+                            id="scientificDisplay"
+                            class="calculator-display"
+                            readonly
+                            value="0"
+                        >
+
+                        <div class="scientific-buttons">
+
+                            <button onclick="scientificClear()">C</button>
+                            <button onclick="scientificDelete()">⌫</button>
+                            <button onclick="scientificAppend('(')">(</button>
+                            <button onclick="scientificAppend(')')">)</button>
+
+                            <button onclick="scientificFunction('sin')">sin</button>
+                            <button onclick="scientificFunction('cos')">cos</button>
+                            <button onclick="scientificFunction('tan')">tan</button>
+                            <button onclick="scientificFunction('sqrt')">√</button>
+
+                            <button onclick="scientificFunction('log')">log</button>
+                            <button onclick="scientificFunction('ln')">ln</button>
+                            <button onclick="scientificAppend('**2')">x²</button>
+                            <button onclick="scientificAppend('**')">xʸ</button>
+
+                            <button onclick="scientificAppend('7')">7</button>
+                            <button onclick="scientificAppend('8')">8</button>
+                            <button onclick="scientificAppend('9')">9</button>
+                            <button onclick="scientificAppend('/')">÷</button>
+
+                            <button onclick="scientificAppend('4')">4</button>
+                            <button onclick="scientificAppend('5')">5</button>
+                            <button onclick="scientificAppend('6')">6</button>
+                            <button onclick="scientificAppend('*')">×</button>
+
+                            <button onclick="scientificAppend('1')">1</button>
+                            <button onclick="scientificAppend('2')">2</button>
+                            <button onclick="scientificAppend('3')">3</button>
+                            <button onclick="scientificAppend('-')">−</button>
+
+                            <button onclick="scientificAppend('0')">0</button>
+                            <button onclick="scientificAppend('.')">.</button>
+                            <button onclick="scientificAppend('+')">+</button>
+
+                            <button
+                                onclick="calculateScientific()"
+                                class="equals-button"
+                            >
+                                =
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    id="conversionCalculator"
+                    class="calculator-panel hidden"
+                >
+
+                    <div class="conversion-grid">
+
+                        <div class="conversion-card">
+                            <h3>Masa</h3>
+
+                            <input
+                                type="number"
+                                id="massValue"
+                                placeholder="Valor"
+                            >
+
+                            <select id="massFrom">
+                                <option value="kg">Kilogramos</option>
+                                <option value="g">Gramos</option>
+                                <option value="t">Toneladas</option>
+                                <option value="mg">Miligramos</option>
+                            </select>
+
+                            <select id="massTo">
+                                <option value="kg">Kilogramos</option>
+                                <option value="g">Gramos</option>
+                                <option value="t">Toneladas</option>
+                                <option value="mg">Miligramos</option>
+                            </select>
+
+                            <button
+                                class="primary-button"
+                                onclick="convertMass()"
+                            >
+                                Convertir
+                            </button>
+
+                            <div
+                                id="massResult"
+                                class="conversion-result"
+                            >
+                                Resultado
+                            </div>
+                        </div>
+
+
+                        <div class="conversion-card">
+                            <h3>Longitud</h3>
+
+                            <input
+                                type="number"
+                                id="lengthValue"
+                                placeholder="Valor"
+                            >
+
+                            <select id="lengthFrom">
+                                <option value="m">Metros</option>
+                                <option value="cm">Centímetros</option>
+                                <option value="mm">Milímetros</option>
+                                <option value="km">Kilómetros</option>
+                                <option value="in">Pulgadas</option>
+                                <option value="ft">Pies</option>
+                            </select>
+
+                            <select id="lengthTo">
+                                <option value="m">Metros</option>
+                                <option value="cm">Centímetros</option>
+                                <option value="mm">Milímetros</option>
+                                <option value="km">Kilómetros</option>
+                                <option value="in">Pulgadas</option>
+                                <option value="ft">Pies</option>
+                            </select>
+
+                            <button
+                                class="primary-button"
+                                onclick="convertLength()"
+                            >
+                                Convertir
+                            </button>
+
+                            <div
+                                id="lengthResult"
+                                class="conversion-result"
+                            >
+                                Resultado
+                            </div>
+                        </div>
+
+
+                        <div class="conversion-card">
+                            <h3>Área</h3>
+
+                            <input
+                                type="number"
+                                id="areaValue"
+                                placeholder="Valor"
+                            >
+
+                            <select id="areaFrom">
+                                <option value="m2">m²</option>
+                                <option value="cm2">cm²</option>
+                                <option value="mm2">mm²</option>
+                                <option value="ha">Hectáreas</option>
+                            </select>
+
+                            <select id="areaTo">
+                                <option value="m2">m²</option>
+                                <option value="cm2">cm²</option>
+                                <option value="mm2">mm²</option>
+                                <option value="ha">Hectáreas</option>
+                            </select>
+
+                            <button
+                                class="primary-button"
+                                onclick="convertArea()"
+                            >
+                                Convertir
+                            </button>
+
+                            <div
+                                id="areaResult"
+                                class="conversion-result"
+                            >
+                                Resultado
+                            </div>
+                        </div>
+
+
+                        <div class="conversion-card">
+                            <h3>Volumen</h3>
+
+                            <input
+                                type="number"
+                                id="volumeValue"
+                                placeholder="Valor"
+                            >
+
+                            <select id="volumeFrom">
+                                <option value="m3">m³</option>
+                                <option value="l">Litros</option>
+                                <option value="cm3">cm³</option>
+                            </select>
+
+                            <select id="volumeTo">
+                                <option value="m3">m³</option>
+                                <option value="l">Litros</option>
+                                <option value="cm3">cm³</option>
+                            </select>
+
+                            <button
+                                class="primary-button"
+                                onclick="convertVolume()"
+                            >
+                                Convertir
+                            </button>
+
+                            <div
+                                id="volumeResult"
+                                class="conversion-result"
+                            >
+                                Resultado
+                            </div>
+                        </div>
+
+
+                        <div class="conversion-card">
+                            <h3>Peso / Fuerza</h3>
+
+                            <input
+                                type="number"
+                                id="weightValue"
+                                placeholder="Masa en kg"
+                            >
+
+                            <button
+                                class="primary-button"
+                                onclick="calculateWeight()"
+                            >
+                                Calcular peso
+                            </button>
+
+                            <div
+                                id="weightResult"
+                                class="conversion-result"
+                            >
+                                Resultado
+                            </div>
+                        </div>
+
+
+                        <div class="conversion-card">
+                            <h3>Temperatura</h3>
+
+                            <input
+                                type="number"
+                                id="temperatureValue"
+                                placeholder="Valor"
+                            >
+
+                            <select id="temperatureFrom">
+                                <option value="C">Celsius</option>
+                                <option value="F">Fahrenheit</option>
+                                <option value="K">Kelvin</option>
+                            </select>
+
+                            <select id="temperatureTo">
+                                <option value="C">Celsius</option>
+                                <option value="F">Fahrenheit</option>
+                                <option value="K">Kelvin</option>
+                            </select>
+
+                            <button
+                                class="primary-button"
+                                onclick="convertTemperature()"
+                            >
+                                Convertir
+                            </button>
+
+                            <div
+                                id="temperatureResult"
+                                class="conversion-result"
+                            >
+                                Resultado
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =========================
+                 CALENDARIO
+            ========================== -->
+            <section id="calendario" class="content-section">
+
+                <div class="section-heading">
+
+                    <div>
+                        <span class="section-kicker">
+                            PLANIFICACIÓN
+                        </span>
+
+                        <h2>Calendario</h2>
+
+                        <p>
+                            Organizá fechas y actividades importantes.
+                        </p>
+                    </div>
+
+                    <button
+                        class="primary-button"
+                        onclick="openModal('eventModal')"
+                    >
+                        Nueva actividad
+                    </button>
+
+                </div>
+
+                <div class="calendar-layout">
+
+                    <div class="panel calendar-main">
+
+                        <div class="calendar-header">
+
+                            <button onclick="changeMonth(-1)">
+                                ‹
+                            </button>
+
+                            <h3 id="calendarMonth"></h3>
+
+                            <button onclick="changeMonth(1)">
+                                ›
+                            </button>
+
+                        </div>
+
+                        <div
+                            id="calendarGrid"
+                            class="calendar-grid"
+                        ></div>
+
+                    </div>
+
+
+                    <div class="panel">
+
+                        <div class="panel-header">
+                            <span class="panel-kicker">
+                                AGENDA
+                            </span>
+
+                            <h3>Actividades</h3>
+                        </div>
+
+                        <div id="eventsContainer"></div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =========================
+                 DOCUMENTOS
+            ========================== -->
+            <section id="documentos" class="content-section">
+
+                <div class="section-heading">
+
+                    <div>
+                        <span class="section-kicker">
+                            ARCHIVOS
+                        </span>
+
+                        <h2>Documentos</h2>
+
+                        <p>
+                            Organizá información y documentos
+                            de tus obras.
+                        </p>
+                    </div>
+
+                    <button
+                        class="primary-button"
+                        onclick="openModal('documentModal')"
+                    >
+                        Nuevo documento
+                    </button>
+
+                </div>
+
+                <div
+                    id="documentsContainer"
+                    class="cards-grid"
+                ></div>
+
+            </section>
+
+
+            <!-- =========================
+                 MATERIALES
+            ========================== -->
+            <section id="materiales" class="content-section">
+
+                <div class="section-heading">
+
+                    <div>
+                        <span class="section-kicker">
+                            INVENTARIO
+                        </span>
+
+                        <h2>Materiales</h2>
+
+                        <p>
+                            Controlá los materiales disponibles
+                            en tus obras.
+                        </p>
+                    </div>
+
+                    <button
+                        class="primary-button"
+                        onclick="openModal('materialModal')"
+                    >
+                        Agregar material
+                    </button>
+
+                </div>
+
+                <div
+                    id="materialsContainer"
+                    class="cards-grid"
+                ></div>
+
+            </section>
+
+
+            <!-- =========================
+                 TAREAS
+            ========================== -->
+            <section id="tareas" class="content-section">
+
+                <div class="section-heading">
+
+                    <div>
+                        <span class="section-kicker">
+                            ACTIVIDADES
+                        </span>
+
+                        <h2>Tareas</h2>
+
+                        <p>
+                            Administrá tus actividades pendientes
+                            y completadas.
+                        </p>
+                    </div>
+
+                    <button
+                        class="primary-button"
+                        onclick="openModal('taskModal')"
+                    >
+                        Nueva tarea
+                    </button>
+
+                </div>
+
+                <div class="task-filter">
+
+                    <button onclick="filterTasks('all')">
+                        Todas
+                    </button>
+
+                    <button onclick="filterTasks('pending')">
+                        Pendientes
+                    </button>
+
+                    <button onclick="filterTasks('completed')">
+                        Completadas
+                    </button>
+
+                </div>
+
+                <div
+                    id="tasksContainer"
+                    class="tasks-container"
+                ></div>
+
+            </section>
+
+
+            <!-- =========================
+                 CUENTA
+            ========================== -->
+            <section id="cuenta" class="content-section">
+
+                <div class="section-heading">
+
+                    <div>
+                        <span class="section-kicker">
+                            PERFIL
+                        </span>
+
+                        <h2>Mi cuenta</h2>
+
+                        <p>
+                            Administrá tus datos personales
+                            y del proyecto.
+                        </p>
+                    </div>
+
+                </div>
+
+                <div class="account-card">
+
+                    <div class="account-header">
+
+                        <div
+                            class="account-avatar"
+                            id="accountAvatar"
+                        >
+                            U
+                        </div>
+
+                        <div>
+
+                            <h3 id="accountHeaderName">
+                                Usuario
+                            </h3>
+
+                            <p id="accountHeaderRole">
+                                Estudiante
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <form
+                        id="accountForm"
+                        class="account-form"
+                    >
+
+                        <div class="form-row">
+
+                            <div class="form-group">
+
+                                <label>
+                                    Nombre completo
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="accountName"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label>
+                                    Correo electrónico
+                                </label>
+
+                                <input
+                                    type="email"
+                                    id="accountEmail"
+                                    required
+                                >
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="form-row">
+
+                            <div class="form-group">
+
+                                <label>
+                                    Rol
+                                </label>
+
+                                <select id="accountRole">
+                                    <option>Arquitecto/a</option>
+                                    <option>Ingeniero/a</option>
+                                    <option>Albañil</option>
+                                    <option>Estudiante</option>
+                                    <option>Otro</option>
+                                </select>
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label>
+                                    Tipo de cuenta
+                                </label>
+
+                                <select id="accountType">
+                                    <option>Estudiante</option>
+                                    <option>Profesional</option>
+                                    <option>Trabajador</option>
+                                    <option>Otro</option>
+                                </select>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Proyecto principal
+                            </label>
+
+                            <input
+                                type="text"
+                                id="accountProject"
+                                placeholder="Nombre del proyecto"
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Preferencias
+                            </label>
+
+                            <textarea
+                                id="accountPreferences"
+                                rows="4"
+                                placeholder="Escribí tus preferencias..."
+                            ></textarea>
+
+                        </div>
+
+
+                        <button
+                            type="submit"
+                            class="primary-button"
+                        >
+                            Guardar cambios
+                        </button>
+
+                    </form>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <!-- =========================
+         MODAL OBRA
+    ========================== -->
+    <div id="obraModal" class="modal hidden">
+
+        <div class="modal-content">
+
+            <button
+                class="modal-close"
+                onclick="closeModal('obraModal')"
+            >
+                ×
+            </button>
+
+            <h2>Nueva obra</h2>
+
+            <form id="obraForm">
+
+                <label>Nombre de la obra</label>
+
+                <input
+                    type="text"
+                    id="obraName"
+                    required
+                >
+
+                <label>Ubicación</label>
+
+                <input
+                    type="text"
+                    id="obraLocation"
+                    placeholder="Ej.: Asunción, Paraguay"
+                    required
+                >
+
+                <label>Estado</label>
+
+                <select id="obraStatus">
+                    <option>Planificación</option>
+                    <option>En progreso</option>
+                    <option>Finalizada</option>
+                </select>
+
+                <button
+                    type="submit"
+                    class="primary-button"
+                >
+                    Guardar obra
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         MODAL NOTA
+    ========================== -->
+    <div id="noteModal" class="modal hidden">
+
+        <div class="modal-content">
+
+            <button
+                class="modal-close"
+                onclick="closeModal('noteModal')"
+            >
+                ×
+            </button>
+
+            <h2>Nueva nota o reporte</h2>
+
+            <form id="noteForm">
+
+                <label>Título</label>
+
+                <input
+                    type="text"
+                    id="noteTitle"
+                    required
+                >
+
+                <label>Obra</label>
+
+                <input
+                    type="text"
+                    id="noteWork"
+                    placeholder="Nombre de la obra"
+                >
+
+                <label>Avances</label>
+                <textarea id="noteProgress"></textarea>
+
+                <label>Pendientes</label>
+                <textarea id="notePending"></textarea>
+
+                <label>Observaciones</label>
+                <textarea id="noteObservations"></textarea>
+
+                <label>Dificultades</label>
+                <textarea id="noteDifficulties"></textarea>
+
+                <label>Fecha</label>
+
+                <input
+                    type="date"
+                    id="noteDate"
+                    required
+                >
+
+                <button
+                    type="submit"
+                    class="primary-button"
+                >
+                    Guardar nota
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         MODAL EVENTO
+    ========================== -->
+    <div id="eventModal" class="modal hidden">
+
+        <div class="modal-content">
+
+            <button
+                class="modal-close"
+                onclick="closeModal('eventModal')"
+            >
+                ×
+            </button>
+
+            <h2>Nueva actividad</h2>
+
+            <form id="eventForm">
+
+                <label>Actividad</label>
+
+                <input
+                    type="text"
+                    id="eventTitle"
+                    required
+                >
+
+                <label>Fecha</label>
+
+                <input
+                    type="date"
+                    id="eventDate"
+                    required
+                >
+
+                <label>Descripción</label>
+
+                <textarea id="eventDescription"></textarea>
+
+                <button
+                    type="submit"
+                    class="primary-button"
+                >
+                    Guardar actividad
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         MODAL DOCUMENTO
+    ========================== -->
+    <div id="documentModal" class="modal hidden">
+
+        <div class="modal-content">
+
+            <button
+                class="modal-close"
+                onclick="closeModal('documentModal')"
+            >
+                ×
+            </button>
+
+            <h2>Nuevo documento</h2>
+
+            <form id="documentForm">
+
+                <label>Nombre del documento</label>
+
+                <input
+                    type="text"
+                    id="documentName"
+                    placeholder="Ej.: Plano de planta"
+                    required
+                >
+
+                <label>Obra</label>
+
+                <input
+                    type="text"
+                    id="documentWork"
+                    placeholder="Nombre de la obra"
+                >
+
+                <label>Tipo</label>
+
+                <select id="documentType">
+                    <option>Planos</option>
+                    <option>Presupuesto</option>
+                    <option>Informe</option>
+                    <option>Factura</option>
+                    <option>Lista de materiales</option>
+                    <option>Otro</option>
+                </select>
+
+                <label>Archivo</label>
+
+                <input
+                    type="file"
+                    id="documentFile"
+                    accept=".pdf,.png,.jpg,.jpeg,.webp,.doc,.docx,.xls,.xlsx,.ppt,.pptx"
+                >
+
+                <p class="file-help">
+                    Podés seleccionar un PDF, imagen u otro documento.
+                    Para esta versión se recomienda utilizar archivos pequeños.
+                </p>
+
+                <label>Descripción</label>
+
+                <textarea
+                    id="documentDescription"
+                    placeholder="Descripción del documento..."
+                ></textarea>
+
+                <button
+                    type="submit"
+                    class="primary-button"
+                >
+                    Guardar documento
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         MODAL MATERIAL
+    ========================== -->
+    <div id="materialModal" class="modal hidden">
+
+        <div class="modal-content">
+
+            <button
+                class="modal-close"
+                onclick="closeModal('materialModal')"
+            >
+                ×
+            </button>
+
+            <h2>Agregar material</h2>
+
+            <form id="materialForm">
+
+                <label>Material</label>
+
+                <input
+                    type="text"
+                    id="materialName"
+                    placeholder="Ej.: Cemento"
+                    required
+                >
+
+                <label>Cantidad</label>
+
+                <input
+                    type="number"
+                    id="materialQuantity"
+                    min="0"
+                    required
+                >
+
+                <label>Unidad</label>
+
+                <select id="materialUnit">
+                    <option>kg</option>
+                    <option>unidad</option>
+                    <option>m</option>
+                    <option>m²</option>
+                    <option>m³</option>
+                    <option>litros</option>
+                    <option>bolsas</option>
+                </select>
+
+                <label>Estado</label>
+
+                <select id="materialStatus">
+                    <option>Disponible</option>
+                    <option>Bajo stock</option>
+                    <option>Agotado</option>
+                </select>
+
+                <button
+                    type="submit"
+                    class="primary-button"
+                >
+                    Guardar material
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         MODAL TAREA
+    ========================== -->
+    <div id="taskModal" class="modal hidden">
+
+        <div class="modal-content">
+
+            <button
+                class="modal-close"
+                onclick="closeModal('taskModal')"
+            >
+                ×
+            </button>
+
+            <h2>Nueva tarea</h2>
+
+            <form id="taskForm">
+
+                <label>Tarea</label>
+
+                <input
+                    type="text"
+                    id="taskTitle"
+                    required
+                >
+
+                <label>Obra</label>
+
+                <input
+                    type="text"
+                    id="taskWork"
+                >
+
+                <label>Fecha límite</label>
+
+                <input
+                    type="date"
+                    id="taskDate"
+                >
+
+                <label>Descripción</label>
+
+                <textarea id="taskDescription"></textarea>
+
+                <button
+                    type="submit"
+                    class="primary-button"
+                >
+                    Guardar tarea
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
