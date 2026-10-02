@@ -192,7 +192,17 @@ function saveData() {
 /* =====================================================
    ROLES
 ===================================================== */
+function startConstrucTools() {
 
+    document
+        .getElementById("welcomeScreen")
+        .classList.add("hidden");
+
+    document
+        .getElementById("roleScreen")
+        .classList.remove("hidden");
+
+}
 function selectRole(role) {
 
     data.user.role = role;
