@@ -10,9 +10,46 @@
 <body>
 
     <!-- =========================
+         PANTALLA DE BIENVENIDA
+    ========================== -->
+    <section id="welcomeScreen" class="welcome-screen">
+
+        <div class="welcome-box">
+
+            <div class="welcome-logo">
+                <h1>ConstrucTools</h1>
+                <span>Construcción • Organización • Herramientas</span>
+            </div>
+
+            <h2>Bienvenido a ConstrucTools</h2>
+
+            <p>
+                Herramientas para estudiantes y profesionales
+                del área de construcción.
+            </p>
+
+            <p class="welcome-slogan">
+                Tu obra, mejor organizada.
+            </p>
+
+            <button
+                type="button"
+                class="welcome-button"
+                onclick="startConstrucTools()"
+            >
+                Comenzar
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
          SELECCIÓN DE ROL
     ========================== -->
-    <section id="roleScreen" class="auth-screen">
+    <section id="roleScreen" class="auth-screen hidden">
+
         <div class="auth-box">
 
             <div class="logo-area">
@@ -28,33 +65,50 @@
 
             <div class="role-grid">
 
-                <button class="role-card" onclick="selectRole('Arquitecto/a')">
+                <button
+                    class="role-card"
+                    onclick="selectRole('Arquitecto/a')"
+                >
                     <strong>Arquitecto/a</strong>
                     <span>Diseño y planificación de obras</span>
                 </button>
 
-                <button class="role-card" onclick="selectRole('Ingeniero/a')">
+                <button
+                    class="role-card"
+                    onclick="selectRole('Ingeniero/a')"
+                >
                     <strong>Ingeniero/a</strong>
                     <span>Cálculos y gestión de proyectos</span>
                 </button>
 
-                <button class="role-card" onclick="selectRole('Albañil')">
+                <button
+                    class="role-card"
+                    onclick="selectRole('Albañil')"
+                >
                     <strong>Albañil</strong>
                     <span>Trabajo y seguimiento de obra</span>
                 </button>
 
-                <button class="role-card" onclick="selectRole('Estudiante')">
+                <button
+                    class="role-card"
+                    onclick="selectRole('Estudiante')"
+                >
                     <strong>Estudiante</strong>
                     <span>Organización de actividades académicas</span>
                 </button>
 
-                <button class="role-card" onclick="selectRole('Otro')">
+                <button
+                    class="role-card"
+                    onclick="selectRole('Otro')"
+                >
                     <strong>Otro</strong>
                     <span>Otra actividad relacionada</span>
                 </button>
 
             </div>
+
         </div>
+
     </section>
 
 
@@ -67,14 +121,19 @@
 
             <div class="logo-area">
                 <h1>ConstrucTools</h1>
-                <p>Herramientas para estudiantes y profesionales de construcción.</p>
+                <p>
+                    Herramientas para estudiantes y profesionales
+                    de construcción.
+                </p>
             </div>
 
             <h2>Iniciar sesión</h2>
 
             <form id="loginForm">
 
-                <label for="loginEmail">Correo electrónico</label>
+                <label for="loginEmail">
+                    Correo electrónico
+                </label>
 
                 <input
                     type="email"
@@ -83,7 +142,9 @@
                     required
                 >
 
-                <label for="loginPassword">Contraseña</label>
+                <label for="loginPassword">
+                    Contraseña
+                </label>
 
                 <input
                     type="password"
@@ -92,7 +153,10 @@
                     required
                 >
 
-                <button type="submit" class="primary-button">
+                <button
+                    type="submit"
+                    class="primary-button"
+                >
                     Iniciar sesión
                 </button>
 
@@ -101,7 +165,10 @@
             <p class="switch-auth">
                 ¿No tenés una cuenta?
 
-                <button type="button" onclick="showRegister()">
+                <button
+                    type="button"
+                    onclick="showRegister()"
+                >
                     Registrate
                 </button>
             </p>
@@ -170,7 +237,10 @@
                     placeholder="Nombre de tu proyecto"
                 >
 
-                <button type="submit" class="primary-button">
+                <button
+                    type="submit"
+                    class="primary-button"
+                >
                     Crear cuenta
                 </button>
 
@@ -179,7 +249,10 @@
             <p class="switch-auth">
                 ¿Ya tenés una cuenta?
 
-                <button type="button" onclick="showLogin()">
+                <button
+                    type="button"
+                    onclick="showLogin()"
+                >
                     Iniciar sesión
                 </button>
             </p>
@@ -204,54 +277,75 @@
 
             <nav class="menu">
 
-                <button class="menu-item active"
-                    onclick="showSection('inicio', this)">
+                <button
+                    class="menu-item active"
+                    onclick="showSection('inicio', this)"
+                >
                     Inicio
                 </button>
 
-                <button class="menu-item"
-                    onclick="showSection('obras', this)">
+                <button
+                    class="menu-item"
+                    onclick="showSection('obras', this)"
+                >
                     Mis obras
                 </button>
 
-                <button class="menu-item"
-                    onclick="showSection('notas', this)">
+                <button
+                    class="menu-item"
+                    onclick="showSection('notas', this)"
+                >
                     Notas y reportes
                 </button>
 
-                <button class="menu-item"
-                    onclick="showSection('calculadora', this)">
+                <button
+                    class="menu-item"
+                    onclick="showSection('calculadora', this)"
+                >
                     Calculadora
                 </button>
 
-                <button class="menu-item"
-                    onclick="showSection('calendario', this)">
+                <button
+                    class="menu-item"
+                    onclick="showSection('calendario', this)"
+                >
                     Calendario
                 </button>
 
-                <button class="menu-item"
-                    onclick="showSection('documentos', this)">
+                <button
+                    class="menu-item"
+                    onclick="showSection('documentos', this)"
+                >
                     Documentos
                 </button>
 
-                <button class="menu-item"
-                    onclick="showSection('materiales', this)">
+                <button
+                    class="menu-item"
+                    onclick="showSection('materiales', this)"
+                >
                     Materiales
                 </button>
 
-                <button class="menu-item"
-                    onclick="showSection('tareas', this)">
+                <button
+                    class="menu-item"
+                    onclick="showSection('tareas', this)"
+                >
                     Tareas
                 </button>
 
-                <button class="menu-item"
-                    onclick="showSection('cuenta', this)">
+                <button
+                    class="menu-item"
+                    onclick="showSection('cuenta', this)"
+                >
                     Mi cuenta
                 </button>
 
             </nav>
 
-            <button class="logout-button" onclick="logout()">
+            <button
+                class="logout-button"
+                onclick="logout()"
+            >
                 Cerrar sesión
             </button>
 
@@ -266,6 +360,7 @@
 
                 <div>
                     <h2 id="pageTitle">Inicio</h2>
+
                     <p id="welcomeText">
                         Bienvenido a ConstrucTools
                     </p>
@@ -297,8 +392,10 @@
             <!-- =========================
                  INICIO
             ========================== -->
-            <section id="inicio"
-                class="content-section active-section">
+            <section
+                id="inicio"
+                class="content-section active-section"
+            >
 
                 <div class="hero-card">
 
@@ -339,10 +436,12 @@
                     </div>
 
                     <div class="hero-decoration">
+
                         <div class="hero-decoration-box">
                             <strong>CT</strong>
                             <span>Organización de obra</span>
                         </div>
+
                     </div>
 
                 </div>
@@ -456,7 +555,10 @@
             <!-- =========================
                  OBRAS
             ========================== -->
-            <section id="obras" class="content-section">
+            <section
+                id="obras"
+                class="content-section"
+            >
 
                 <div class="section-heading">
 
@@ -492,7 +594,10 @@
             <!-- =========================
                  NOTAS
             ========================== -->
-            <section id="notas" class="content-section">
+            <section
+                id="notas"
+                class="content-section"
+            >
 
                 <div class="section-heading">
 
@@ -529,7 +634,10 @@
             <!-- =========================
                  CALCULADORA
             ========================== -->
-            <section id="calculadora" class="content-section">
+            <section
+                id="calculadora"
+                class="content-section"
+            >
 
                 <div class="section-heading">
 
@@ -709,6 +817,7 @@
                     <div class="conversion-grid">
 
                         <div class="conversion-card">
+
                             <h3>Masa</h3>
 
                             <input
@@ -744,10 +853,12 @@
                             >
                                 Resultado
                             </div>
+
                         </div>
 
 
                         <div class="conversion-card">
+
                             <h3>Longitud</h3>
 
                             <input
@@ -787,10 +898,12 @@
                             >
                                 Resultado
                             </div>
+
                         </div>
 
 
                         <div class="conversion-card">
+
                             <h3>Área</h3>
 
                             <input
@@ -826,10 +939,12 @@
                             >
                                 Resultado
                             </div>
+
                         </div>
 
 
                         <div class="conversion-card">
+
                             <h3>Volumen</h3>
 
                             <input
@@ -863,10 +978,12 @@
                             >
                                 Resultado
                             </div>
+
                         </div>
 
 
                         <div class="conversion-card">
+
                             <h3>Peso / Fuerza</h3>
 
                             <input
@@ -888,10 +1005,12 @@
                             >
                                 Resultado
                             </div>
+
                         </div>
 
 
                         <div class="conversion-card">
+
                             <h3>Temperatura</h3>
 
                             <input
@@ -925,6 +1044,7 @@
                             >
                                 Resultado
                             </div>
+
                         </div>
 
                     </div>
@@ -937,7 +1057,10 @@
             <!-- =========================
                  CALENDARIO
             ========================== -->
-            <section id="calendario" class="content-section">
+            <section
+                id="calendario"
+                class="content-section"
+            >
 
                 <div class="section-heading">
 
@@ -961,6 +1084,7 @@
                     </button>
 
                 </div>
+
 
                 <div class="calendar-layout">
 
@@ -991,11 +1115,15 @@
                     <div class="panel">
 
                         <div class="panel-header">
+
                             <span class="panel-kicker">
                                 AGENDA
                             </span>
 
-                            <h3>Actividades</h3>
+                            <h3>
+                                Actividades
+                            </h3>
+
                         </div>
 
                         <div id="eventsContainer"></div>
@@ -1010,7 +1138,10 @@
             <!-- =========================
                  DOCUMENTOS
             ========================== -->
-            <section id="documentos" class="content-section">
+            <section
+                id="documentos"
+                class="content-section"
+            >
 
                 <div class="section-heading">
 
@@ -1047,7 +1178,10 @@
             <!-- =========================
                  MATERIALES
             ========================== -->
-            <section id="materiales" class="content-section">
+            <section
+                id="materiales"
+                class="content-section"
+            >
 
                 <div class="section-heading">
 
@@ -1084,7 +1218,10 @@
             <!-- =========================
                  TAREAS
             ========================== -->
-            <section id="tareas" class="content-section">
+            <section
+                id="tareas"
+                class="content-section"
+            >
 
                 <div class="section-heading">
 
@@ -1110,6 +1247,7 @@
 
                 </div>
 
+
                 <div class="task-filter">
 
                     <button onclick="filterTasks('all')">
@@ -1126,6 +1264,7 @@
 
                 </div>
 
+
                 <div
                     id="tasksContainer"
                     class="tasks-container"
@@ -1137,7 +1276,10 @@
             <!-- =========================
                  CUENTA
             ========================== -->
-            <section id="cuenta" class="content-section">
+            <section
+                id="cuenta"
+                class="content-section"
+            >
 
                 <div class="section-heading">
 
@@ -1155,6 +1297,7 @@
                     </div>
 
                 </div>
+
 
                 <div class="account-card">
 
@@ -1230,11 +1373,27 @@
                                 </label>
 
                                 <select id="accountRole">
-                                    <option>Arquitecto/a</option>
-                                    <option>Ingeniero/a</option>
-                                    <option>Albañil</option>
-                                    <option>Estudiante</option>
-                                    <option>Otro</option>
+
+                                    <option>
+                                        Arquitecto/a
+                                    </option>
+
+                                    <option>
+                                        Ingeniero/a
+                                    </option>
+
+                                    <option>
+                                        Albañil
+                                    </option>
+
+                                    <option>
+                                        Estudiante
+                                    </option>
+
+                                    <option>
+                                        Otro
+                                    </option>
+
                                 </select>
 
                             </div>
@@ -1247,10 +1406,23 @@
                                 </label>
 
                                 <select id="accountType">
-                                    <option>Estudiante</option>
-                                    <option>Profesional</option>
-                                    <option>Trabajador</option>
-                                    <option>Otro</option>
+
+                                    <option>
+                                        Estudiante
+                                    </option>
+
+                                    <option>
+                                        Profesional
+                                    </option>
+
+                                    <option>
+                                        Trabajador
+                                    </option>
+
+                                    <option>
+                                        Otro
+                                    </option>
+
                                 </select>
 
                             </div>
@@ -1307,9 +1479,12 @@
 
 
     <!-- =========================
-         MODAL OBRA
+         MODAL NUEVA OBRA
     ========================== -->
-    <div id="obraModal" class="modal hidden">
+    <div
+        id="obraModal"
+        class="modal hidden"
+    >
 
         <div class="modal-content">
 
@@ -1324,7 +1499,9 @@
 
             <form id="obraForm">
 
-                <label>Nombre de la obra</label>
+                <label>
+                    Nombre de la obra
+                </label>
 
                 <input
                     type="text"
@@ -1332,7 +1509,9 @@
                     required
                 >
 
-                <label>Ubicación</label>
+                <label>
+                    Ubicación
+                </label>
 
                 <input
                     type="text"
@@ -1341,12 +1520,24 @@
                     required
                 >
 
-                <label>Estado</label>
+                <label>
+                    Estado
+                </label>
 
                 <select id="obraStatus">
-                    <option>Planificación</option>
-                    <option>En progreso</option>
-                    <option>Finalizada</option>
+
+                    <option>
+                        Planificación
+                    </option>
+
+                    <option>
+                        En progreso
+                    </option>
+
+                    <option>
+                        Finalizada
+                    </option>
+
                 </select>
 
                 <button
@@ -1366,7 +1557,10 @@
     <!-- =========================
          MODAL NOTA
     ========================== -->
-    <div id="noteModal" class="modal hidden">
+    <div
+        id="noteModal"
+        class="modal hidden"
+    >
 
         <div class="modal-content">
 
@@ -1398,15 +1592,19 @@
                 >
 
                 <label>Avances</label>
+
                 <textarea id="noteProgress"></textarea>
 
                 <label>Pendientes</label>
+
                 <textarea id="notePending"></textarea>
 
                 <label>Observaciones</label>
+
                 <textarea id="noteObservations"></textarea>
 
                 <label>Dificultades</label>
+
                 <textarea id="noteDifficulties"></textarea>
 
                 <label>Fecha</label>
@@ -1432,9 +1630,12 @@
 
 
     <!-- =========================
-         MODAL EVENTO
+         MODAL ACTIVIDAD
     ========================== -->
-    <div id="eventModal" class="modal hidden">
+    <div
+        id="eventModal"
+        class="modal hidden"
+    >
 
         <div class="modal-content">
 
@@ -1486,7 +1687,10 @@
     <!-- =========================
          MODAL DOCUMENTO
     ========================== -->
-    <div id="documentModal" class="modal hidden">
+    <div
+        id="documentModal"
+        class="modal hidden"
+    >
 
         <div class="modal-content">
 
@@ -1501,7 +1705,9 @@
 
             <form id="documentForm">
 
-                <label>Nombre del documento</label>
+                <label>
+                    Nombre del documento
+                </label>
 
                 <input
                     type="text"
@@ -1521,12 +1727,14 @@
                 <label>Tipo</label>
 
                 <select id="documentType">
+
                     <option>Planos</option>
                     <option>Presupuesto</option>
                     <option>Informe</option>
                     <option>Factura</option>
                     <option>Lista de materiales</option>
                     <option>Otro</option>
+
                 </select>
 
                 <label>Archivo</label>
@@ -1566,7 +1774,10 @@
     <!-- =========================
          MODAL MATERIAL
     ========================== -->
-    <div id="materialModal" class="modal hidden">
+    <div
+        id="materialModal"
+        class="modal hidden"
+    >
 
         <div class="modal-content">
 
@@ -1602,6 +1813,7 @@
                 <label>Unidad</label>
 
                 <select id="materialUnit">
+
                     <option>kg</option>
                     <option>unidad</option>
                     <option>m</option>
@@ -1609,14 +1821,17 @@
                     <option>m³</option>
                     <option>litros</option>
                     <option>bolsas</option>
+
                 </select>
 
                 <label>Estado</label>
 
                 <select id="materialStatus">
+
                     <option>Disponible</option>
                     <option>Bajo stock</option>
                     <option>Agotado</option>
+
                 </select>
 
                 <button
@@ -1636,7 +1851,10 @@
     <!-- =========================
          MODAL TAREA
     ========================== -->
-    <div id="taskModal" class="modal hidden">
+    <div
+        id="taskModal"
+        class="modal hidden"
+    >
 
         <div class="modal-content">
 

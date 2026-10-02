@@ -85,8 +85,12 @@ document.addEventListener("DOMContentLoaded", function () {
     } else {
 
         document
-            .getElementById("roleScreen")
+            .getElementById("welcomeScreen")
             .classList.remove("hidden");
+
+        document
+            .getElementById("roleScreen")
+            .classList.add("hidden");
 
     }
 
@@ -94,6 +98,23 @@ document.addEventListener("DOMContentLoaded", function () {
     renderEverything();
 
 });
+
+
+/* =====================================================
+   PANTALLA DE BIENVENIDA
+===================================================== */
+
+function startConstrucTools() {
+
+    document
+        .getElementById("welcomeScreen")
+        .classList.add("hidden");
+
+    document
+        .getElementById("roleScreen")
+        .classList.remove("hidden");
+
+}
 
 
 /* =====================================================
@@ -332,6 +353,10 @@ function login(event) {
 ===================================================== */
 
 function showApp() {
+
+    document
+        .getElementById("welcomeScreen")
+        .classList.add("hidden");
 
     document
         .getElementById("roleScreen")
