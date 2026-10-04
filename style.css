@@ -72,7 +72,19 @@ button {
     border-radius: 22px;
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
 }
+.welcome-logo-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
 
+.welcome-logo-image img {
+    width: 150px;
+    height: 150px;
+    object-fit: contain;
+    border-radius: 18px;
+}
 .welcome-logo h1 {
     margin: 0;
     font-size: 42px;
@@ -445,12 +457,12 @@ textarea {
 ===================================================== */
 
 .content-section {
-    display: none;
+    display: none !important;
     padding-top: 30px;
 }
 
 .content-section.active-section {
-    display: block;
+    display: block !important;
 }
 
 .section-heading {
@@ -1547,6 +1559,11 @@ textarea {
 
 @media (max-width: 650px) {
 
+    .welcome-logo-image img {
+        width: 120px;
+        height: 120px;
+    }
+
     .welcome-box {
         padding: 40px 25px;
     }
@@ -1656,7 +1673,6 @@ textarea {
     }
 }
 
-
 @media (max-width: 450px) {
 
     .topbar-right {
@@ -1700,5 +1716,1664 @@ textarea {
 
     .modal-content {
         padding: 25px 18px;
+    }
+}
+/* BOTÓN COMENZAR */
+.welcome-box .btn-primary {
+    display: block;
+    width: 100%;
+    max-width: 280px;
+    margin: 25px auto 0;
+    padding: 14px 25px;
+    border: none;
+    border-radius: 12px;
+    background: #0b2d4d;
+    color: white;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s ease;
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.15);
+}
+
+.welcome-box .btn-primary:hover {
+    transform: translateY(-2px);
+    background: #0e4775;
+    box-shadow: 0 7px 16px rgba(0, 0, 0, 0.2);
+}
+
+.welcome-box .btn-primary:active {
+    transform: scale(0.98);
+}
+/* LOGO DE LA PANTALLA DE BIENVENIDA */
+.welcome-logo-image {
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 0 auto 20px;
+}
+
+.welcome-logo-image img {
+    display: block !important;
+    width: 150px !important;
+    height: 150px !important;
+    object-fit: contain;
+    border-radius: 18px;
+}
+.logo-constructools {
+    width: 190px;
+    height: auto;
+    display: block;
+    margin: 0 auto 24px;
+}
+/* =====================================================
+   AJUSTE FINAL REAL - TARJETAS Y BOTONES
+===================================================== */
+
+/* =====================================================
+   TARJETAS GENERALES
+===================================================== */
+
+.work-card,
+.material-card,
+.document-card,
+.note-card,
+.task-card {
+    min-width: 0;
+    overflow: hidden;
+}
+
+/* =====================================================
+   MIS OBRAS
+===================================================== */
+
+.work-card {
+    display: flex;
+    flex-direction: column;
+}
+
+.work-card-cover {
+    height: 125px;
+    flex-shrink: 0;
+}
+
+.work-icon {
+    margin: -25px 20px 15px;
+}
+
+.work-card h3 {
+    margin: 0 20px 10px;
+    color: var(--blue-dark);
+    font-size: 18px;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+}
+
+.work-card .work-location {
+    margin: 0 20px 12px;
+    color: var(--muted);
+    line-height: 1.5;
+}
+
+.work-card .map-link {
+    display: inline-block;
+    margin: 4px 20px 12px;
+    color: var(--blue);
+    line-height: 1.4;
+}
+
+.work-card .status {
+    display: inline-block;
+    width: fit-content;
+    margin: 8px 20px 16px;
+}
+
+.work-card .card-actions {
+    margin: 4px 20px 20px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+}
+
+/* =====================================================
+   BOTONES
+===================================================== */
+
+.card-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.card-actions button {
+    min-height: 38px;
+    padding: 9px 15px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+/* ELIMINAR */
+
+.delete-button {
+    min-width: 88px;
+    border: none !important;
+    background: #fff0f0 !important;
+    color: var(--danger) !important;
+}
+
+.delete-button:hover {
+    background: var(--danger) !important;
+    color: white !important;
+    transform: translateY(-1px);
+}
+
+/* EDITAR */
+
+.edit-button {
+    border: 1px solid #c7dff1 !important;
+    background: var(--blue-light) !important;
+    color: var(--blue) !important;
+}
+
+.edit-button:hover {
+    background: var(--blue) !important;
+    color: white !important;
+}
+
+/* VER ARCHIVO */
+
+.document-view-button {
+    min-width: 105px;
+    border: 1px solid var(--blue) !important;
+    background: var(--blue) !important;
+    color: white !important;
+}
+
+.document-view-button:hover {
+    background: var(--blue-dark) !important;
+}
+
+/* COMPLETAR */
+
+.complete-button {
+    min-width: 105px;
+    border: none !important;
+    background: #e7f6ef !important;
+    color: var(--success) !important;
+}
+
+.complete-button:hover {
+    background: var(--success) !important;
+    color: white !important;
+}
+
+/* =====================================================
+   NOTAS Y REPORTES
+===================================================== */
+
+.note-card {
+    padding: 22px;
+}
+
+.note-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.note-card-header > div {
+    min-width: 0;
+}
+
+.note-card h3 {
+    margin: 0;
+    color: var(--blue-dark);
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+}
+
+.note-date {
+    flex-shrink: 0;
+    white-space: nowrap;
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.note-block {
+    margin-top: 14px;
+    padding: 14px;
+    border-radius: 10px;
+    background: #f7f9fb;
+}
+
+.note-block strong {
+    display: block;
+    margin-bottom: 6px;
+    color: var(--blue);
+}
+
+.note-block p {
+    margin: 0;
+    color: var(--muted);
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+}
+
+/* =====================================================
+   DOCUMENTOS
+===================================================== */
+
+.document-card {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Imagen superior */
+
+.document-preview {
+    height: 120px;
+    flex-shrink: 0;
+}
+
+/* Cuadro DOC */
+
+.document-icon {
+    width: 52px;
+    height: 52px;
+    margin: -25px 20px 12px;
+    position: relative;
+    z-index: 2;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 12px;
+    background: var(--blue);
+    color: white;
+
+    font-size: 17px;
+    font-weight: 800;
+
+    box-shadow: 0 6px 15px rgba(23,105,170,0.25);
+}
+
+/* Tipo de documento */
+
+.document-type {
+    display: inline-block;
+    width: fit-content;
+    margin: 0 20px 10px;
+    padding: 5px 9px;
+
+    border-radius: 6px;
+    background: var(--blue-light);
+    color: var(--blue);
+
+    font-size: 10px;
+    font-weight: 800;
+}
+
+/* Título */
+
+.document-card h3 {
+    margin: 0 20px 10px;
+    color: var(--blue-dark);
+    font-size: 18px;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+}
+
+/* Descripción */
+
+.document-card p {
+    margin: 0 20px 14px;
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+}
+
+/* Archivo */
+
+.document-file {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    margin: 0 20px 16px;
+    padding: 12px 14px;
+
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    background: #f7f9fb;
+
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.5;
+
+    overflow-wrap: anywhere;
+    word-break: break-word;
+}
+
+/* Acciones de documentos */
+
+.document-card .card-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+
+    margin: 0 20px 20px;
+    padding-top: 16px;
+
+    border-top: 1px solid var(--border);
+}
+
+.document-card .card-actions button {
+    min-height: 39px;
+}
+
+/* Todos los botones de documentos */
+
+.document-card .document-view-button {
+    flex: 0 0 auto;
+}
+
+.document-card .card-actions button:not(.delete-button) {
+    white-space: nowrap;
+}
+
+/* =====================================================
+   MATERIALES
+===================================================== */
+
+.material-card {
+    display: flex;
+    flex-direction: column;
+}
+
+.material-card-cover {
+    height: 115px;
+    flex-shrink: 0;
+}
+
+.material-card h3 {
+    margin: 20px 20px 12px;
+    color: var(--blue-dark);
+    font-size: 18px;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+}
+
+.material-quantity {
+    margin: 0 20px 16px;
+    padding: 15px;
+
+    border-radius: 10px;
+    background: #f7f9fb;
+}
+
+.material-quantity span {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.material-quantity strong {
+    display: inline-block;
+    margin-top: 0;
+    color: var(--blue);
+    font-size: 28px;
+}
+
+.material-card .status {
+    display: inline-block;
+    width: fit-content;
+    margin: 0 20px 16px;
+}
+
+.material-card .card-actions {
+    margin: 0 20px 20px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+}
+
+/* =====================================================
+   TAREAS
+===================================================== */
+
+.task-card {
+    display: flex;
+    align-items: stretch;
+    gap: 20px;
+    padding: 20px;
+}
+
+.task-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.task-info h3 {
+    margin: 0 0 10px;
+    color: var(--blue-dark);
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+}
+
+.task-info p {
+    margin: 7px 0;
+    color: var(--muted);
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+}
+
+.task-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    flex-shrink: 0;
+}
+
+/* =====================================================
+   CELULAR
+===================================================== */
+
+@media (max-width: 650px) {
+
+    /* OBRAS */
+
+    .work-card h3,
+    .work-card .work-location,
+    .work-card .map-link,
+    .work-card .status {
+        margin-left: 16px;
+        margin-right: 16px;
+    }
+
+    .work-icon {
+        margin-left: 16px;
+    }
+
+    .work-card .card-actions {
+        margin-left: 16px;
+        margin-right: 16px;
+    }
+
+    /* DOCUMENTOS */
+
+    .document-icon {
+        margin-left: 16px;
+    }
+
+    .document-type,
+    .document-card h3,
+    .document-card p,
+    .document-file {
+        margin-left: 16px;
+        margin-right: 16px;
+    }
+
+    .document-card .card-actions {
+        margin-left: 16px;
+        margin-right: 16px;
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .document-card .card-actions button {
+        width: 100%;
+    }
+
+    /* MATERIALES */
+
+    .material-card h3,
+    .material-quantity,
+    .material-card .status,
+    .material-card .card-actions {
+        margin-left: 16px;
+        margin-right: 16px;
+    }
+
+    /* NOTAS */
+
+    .note-card-header {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .note-date {
+        white-space: normal;
+    }
+
+    /* TAREAS */
+
+    .task-card {
+        flex-direction: column;
+    }
+
+    .task-actions {
+        width: 100%;
+    }
+
+    .task-actions button {
+        flex: 1 1 auto;
+    }
+
+    /* BOTONES */
+
+    .card-actions button {
+        flex: 1 1 auto;
+    }
+}
+/* =====================================================
+   DOCUMENTOS - ESTILO FINAL
+===================================================== */
+
+.document-card {
+    overflow: hidden;
+    padding: 0;
+}
+
+/* Parte superior */
+
+.document-card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+
+    padding: 20px;
+    background: #f7f9fb;
+
+    border-bottom: 1px solid var(--border);
+}
+
+/* Cuadro DOC */
+
+.document-icon {
+    width: 55px;
+    height: 55px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin: 0;
+
+    border-radius: 12px;
+    background: var(--blue);
+    color: white;
+
+    font-size: 16px;
+    font-weight: 800;
+
+    box-shadow: 0 5px 12px rgba(23, 105, 170, 0.20);
+}
+
+/* Botón eliminar */
+
+.document-card-top .delete-button {
+    min-height: 38px;
+    padding: 9px 15px;
+
+    border: none;
+    border-radius: 8px;
+
+    background: #fff0f0;
+    color: var(--danger);
+
+    font-size: 13px;
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+/* Contenido */
+
+.document-card-content {
+    padding: 20px;
+}
+
+/* Tipo: Planos, Informe, etc. */
+
+.document-type {
+    display: inline-block;
+
+    margin: 0 0 12px;
+    padding: 6px 10px;
+
+    border-radius: 6px;
+
+    background: var(--blue-light);
+    color: var(--blue);
+
+    font-size: 11px;
+    font-weight: 800;
+}
+
+/* Título */
+
+.document-card-content h3 {
+    margin: 0 0 14px;
+
+    color: var(--blue-dark);
+
+    font-size: 18px;
+    line-height: 1.4;
+
+    overflow-wrap: anywhere;
+}
+
+/* Obra */
+
+.document-work {
+    margin: 0 0 12px;
+
+    color: var(--muted);
+
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+/* Descripción */
+
+.document-description {
+    margin: 0 0 16px;
+
+    color: var(--muted);
+
+    font-size: 13px;
+    line-height: 1.6;
+
+    overflow-wrap: anywhere;
+}
+
+/* Archivo adjunto */
+
+.document-file-box {
+    display: flex;
+    align-items: center;
+
+    min-height: 45px;
+
+    margin: 0 0 16px;
+    padding: 11px 13px;
+
+    border: 1px solid var(--border);
+    border-radius: 9px;
+
+    background: #f7f9fb;
+
+    color: var(--muted);
+
+    font-size: 12px;
+
+    overflow-wrap: anywhere;
+    word-break: break-word;
+}
+
+/* Botones */
+
+.document-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+
+    padding-top: 16px;
+
+    border-top: 1px solid var(--border);
+}
+
+.document-actions button {
+    min-height: 39px;
+
+    padding: 9px 16px;
+
+    border-radius: 8px;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+/* Ver archivo */
+
+.document-view-button {
+    border: none;
+
+    background: var(--blue);
+    color: white;
+}
+
+.document-view-button:hover {
+    background: var(--blue-dark);
+}
+
+/* Descargar */
+
+.document-download-button {
+    border: 1px solid #c7dff1;
+
+    background: var(--blue-light);
+    color: var(--blue);
+}
+
+.document-download-button:hover {
+    background: var(--blue);
+    color: white;
+}
+
+/* Sin archivo */
+
+.document-card .file-help {
+    display: block;
+
+    margin-top: 5px;
+
+    color: var(--muted);
+
+    font-size: 12px;
+}
+
+/* =====================================================
+   CELULAR
+===================================================== */
+
+@media (max-width: 650px) {
+
+    .document-card-top {
+        padding: 16px;
+    }
+
+    .document-card-content {
+        padding: 16px;
+    }
+
+    .document-actions {
+        flex-direction: column;
+    }
+
+    .document-actions button {
+        width: 100%;
+    }
+
+    .document-card-top .delete-button {
+        flex-shrink: 0;
+    }
+}
+/* =====================================================
+   MIS OBRAS - ORDEN Y ESPACIADO
+===================================================== */
+
+.work-card {
+    overflow: hidden;
+    padding: 0;
+}
+
+/* Imagen / encabezado */
+
+.work-card-cover {
+    height: 120px;
+    margin: 0;
+}
+
+/* Contenido */
+
+.work-card-body {
+    padding: 20px;
+}
+
+/* Nombre + estado + eliminar */
+
+.work-card-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 18px;
+
+    margin-bottom: 18px;
+}
+
+.work-card-top > div {
+    min-width: 0;
+    flex: 1;
+}
+
+.work-card-top h3 {
+    margin: 0 0 10px;
+
+    color: var(--blue-dark);
+    font-size: 18px;
+    line-height: 1.4;
+
+    overflow-wrap: anywhere;
+}
+
+/* Estado */
+
+.work-card .status-badge {
+    display: inline-block;
+
+    padding: 6px 10px;
+
+    border-radius: 6px;
+
+    background: var(--blue-light);
+    color: var(--blue);
+
+    font-size: 11px;
+    font-weight: 800;
+}
+
+/* Botón eliminar */
+
+.work-card-top .delete-button {
+    flex-shrink: 0;
+
+    min-height: 38px;
+    padding: 9px 14px;
+
+    border: none;
+    border-radius: 8px;
+
+    background: #fff0f0;
+    color: var(--danger);
+
+    font-size: 13px;
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+/* Ubicación */
+
+.work-card .work-location {
+    margin: 0 0 8px;
+
+    color: var(--muted);
+
+    font-size: 13px;
+    line-height: 1.5;
+
+    overflow-wrap: anywhere;
+}
+
+/* Ver ubicación */
+
+.work-card .map-link {
+    display: inline-block;
+
+    margin: 0 0 20px;
+
+    color: var(--blue);
+
+    font-size: 13px;
+    font-weight: 700;
+
+    text-decoration: none;
+}
+
+.work-card .map-link:hover {
+    text-decoration: underline;
+}
+
+/* =====================================================
+   RESUMEN DE MATERIALES / TAREAS / DOCUMENTOS / COMPRAS
+===================================================== */
+
+.work-summary {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 10px;
+
+    margin-bottom: 18px;
+}
+
+.work-summary > div {
+    min-width: 0;
+
+    padding: 12px 8px;
+
+    border: 1px solid var(--border);
+    border-radius: 9px;
+
+    background: #f7f9fb;
+
+    text-align: center;
+}
+
+.work-summary span {
+    display: block;
+
+    margin-bottom: 6px;
+
+    color: var(--muted);
+
+    font-size: 10px;
+    line-height: 1.3;
+}
+
+.work-summary strong {
+    display: block;
+
+    color: var(--blue-dark);
+
+    font-size: 20px;
+}
+
+/* =====================================================
+   PRESUPUESTO
+===================================================== */
+
+.budget-summary {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 10px;
+
+    padding-top: 18px;
+
+    border-top: 1px solid var(--border);
+}
+
+.budget-summary > div {
+    min-width: 0;
+
+    padding: 12px;
+
+    border-radius: 9px;
+
+    background: #f7f9fb;
+}
+
+.budget-summary span {
+    display: block;
+
+    margin-bottom: 6px;
+
+    color: var(--muted);
+
+    font-size: 11px;
+}
+
+.budget-summary strong {
+    display: block;
+
+    color: var(--blue-dark);
+
+    font-size: 14px;
+
+    overflow-wrap: anywhere;
+}
+
+.budget-summary .negative-value {
+    color: var(--danger);
+}
+
+/* =====================================================
+   CELULAR
+===================================================== */
+
+@media (max-width: 650px) {
+
+    .work-card-body {
+        padding: 16px;
+    }
+
+    .work-card-top {
+        gap: 12px;
+    }
+
+    .work-card-top h3 {
+        font-size: 17px;
+    }
+
+    .work-summary {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+    }
+
+    .budget-summary {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+
+    .budget-summary > div {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+    }
+
+    .budget-summary span {
+        margin-bottom: 0;
+    }
+
+    .budget-summary strong {
+        text-align: right;
+    }
+}
+/* =====================================================
+   TAREAS - ORDEN Y ESPACIADO
+===================================================== */
+
+.task-card {
+    overflow: hidden;
+    padding: 0;
+}
+
+/* Contenido principal */
+
+.task-card-main {
+    padding: 20px;
+}
+
+/* =====================================================
+   ENCABEZADO
+===================================================== */
+
+.task-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    gap: 18px;
+
+    margin-bottom: 18px;
+}
+
+.task-header > div {
+    min-width: 0;
+    flex: 1;
+}
+
+.task-header h3 {
+    margin: 0 0 10px;
+
+    color: var(--blue-dark);
+
+    font-size: 18px;
+    line-height: 1.4;
+
+    overflow-wrap: anywhere;
+}
+
+/* =====================================================
+   ESTADOS Y PRIORIDAD
+===================================================== */
+
+.task-badges {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+
+    gap: 8px;
+}
+
+.task-status,
+.task-priority {
+    display: inline-block;
+
+    padding: 6px 10px;
+
+    border-radius: 6px;
+
+    font-size: 10px;
+    font-weight: 800;
+}
+
+/* Estado */
+
+.task-status {
+    background: var(--blue-light);
+    color: var(--blue);
+}
+
+/* Prioridad */
+
+.task-priority {
+    background: #f4f5f7;
+    color: var(--muted);
+}
+
+/* =====================================================
+   BOTÓN ELIMINAR
+===================================================== */
+
+.task-header .delete-button {
+    flex-shrink: 0;
+
+    min-height: 38px;
+
+    padding: 9px 14px;
+
+    border: none;
+    border-radius: 8px;
+
+    background: #fff0f0;
+    color: var(--danger);
+
+    font-size: 13px;
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+/* =====================================================
+   INFORMACIÓN DE LA TAREA
+===================================================== */
+
+.task-card-main > p {
+    margin: 0 0 12px;
+
+    color: var(--muted);
+
+    font-size: 13px;
+    line-height: 1.6;
+
+    overflow-wrap: anywhere;
+}
+
+.task-card-main > p strong {
+    color: var(--blue-dark);
+}
+
+/* =====================================================
+   BOTÓN CAMBIAR ESTADO
+===================================================== */
+
+.task-actions {
+    display: flex;
+
+    margin-top: 20px;
+    padding-top: 16px;
+
+    border-top: 1px solid var(--border);
+}
+
+.task-actions button {
+    min-height: 40px;
+
+    padding: 9px 16px;
+
+    border: 1px solid #c7dff1;
+    border-radius: 8px;
+
+    background: var(--blue-light);
+    color: var(--blue);
+
+    font-size: 13px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+.task-actions button:hover {
+    background: var(--blue);
+    color: white;
+}
+
+/* =====================================================
+   CELULAR
+===================================================== */
+
+@media (max-width: 650px) {
+
+    .task-card-main {
+        padding: 16px;
+    }
+
+    .task-header {
+        gap: 12px;
+    }
+
+    .task-header h3 {
+        font-size: 17px;
+    }
+
+    .task-badges {
+        gap: 6px;
+    }
+
+    .task-header .delete-button {
+        padding: 8px 11px;
+        font-size: 12px;
+    }
+
+    .task-actions button {
+        width: 100%;
+    }
+}/* =====================================================
+   MATERIALES - ORDEN Y ESPACIADO
+===================================================== */
+
+.material-card {
+    overflow: hidden;
+    padding: 0;
+}
+
+/* Contenido */
+
+.material-card-body {
+    padding: 20px;
+}
+
+/* =====================================================
+   ENCABEZADO
+===================================================== */
+
+.material-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    gap: 18px;
+
+    margin-bottom: 20px;
+}
+
+.material-header > div {
+    min-width: 0;
+    flex: 1;
+}
+
+.material-header h3 {
+    margin: 0 0 10px;
+
+    color: var(--blue-dark);
+
+    font-size: 18px;
+    line-height: 1.4;
+
+    overflow-wrap: anywhere;
+}
+
+/* Categoría */
+
+.material-category {
+    display: inline-block;
+
+    padding: 6px 10px;
+
+    border-radius: 6px;
+
+    background: var(--blue-light);
+    color: var(--blue);
+
+    font-size: 10px;
+    font-weight: 800;
+}
+
+/* =====================================================
+   ELIMINAR
+===================================================== */
+
+.material-header .delete-button {
+    flex-shrink: 0;
+
+    min-height: 38px;
+
+    padding: 9px 14px;
+
+    border: none;
+    border-radius: 8px;
+
+    background: #fff0f0;
+    color: var(--danger);
+
+    font-size: 13px;
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+/* =====================================================
+   DETALLES DEL MATERIAL
+===================================================== */
+
+.material-details {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 10px;
+
+    margin-bottom: 18px;
+}
+
+.material-details > div {
+    min-width: 0;
+
+    padding: 14px 10px;
+
+    border: 1px solid var(--border);
+    border-radius: 9px;
+
+    background: #f7f9fb;
+
+    text-align: center;
+}
+
+.material-details span {
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: var(--muted);
+
+    font-size: 10px;
+    line-height: 1.3;
+}
+
+.material-details strong {
+    display: block;
+
+    color: var(--blue-dark);
+
+    font-size: 15px;
+
+    overflow-wrap: anywhere;
+}
+
+/* =====================================================
+   OBRA Y PROVEEDOR
+===================================================== */
+
+.material-card-body > p {
+    margin: 0 0 10px;
+
+    color: var(--muted);
+
+    font-size: 13px;
+    line-height: 1.5;
+
+    overflow-wrap: anywhere;
+}
+
+.material-card-body > p strong {
+    color: var(--blue-dark);
+}
+
+/* =====================================================
+   ESTADO / STOCK
+===================================================== */
+
+.stock-badge {
+    display: inline-block;
+
+    margin-top: 8px;
+
+    padding: 7px 11px;
+
+    border-radius: 7px;
+
+    font-size: 10px;
+    font-weight: 800;
+}
+
+/* =====================================================
+   CELULAR
+===================================================== */
+
+@media (max-width: 650px) {
+
+    .material-card-body {
+        padding: 16px;
+    }
+
+    .material-header {
+        gap: 12px;
+    }
+
+    .material-header h3 {
+        font-size: 17px;
+    }
+
+    .material-details {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+
+    .material-details > div {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        gap: 12px;
+
+        text-align: left;
+    }
+
+    .material-details span {
+        margin-bottom: 0;
+    }
+
+    .material-details strong {
+        text-align: right;
+    }
+
+    .material-header .delete-button {
+        padding: 8px 11px;
+        font-size: 12px;
+    }
+}
+/* =====================================================
+   NOTAS Y REPORTES - ORDEN Y ESPACIADO
+===================================================== */
+
+.note-card {
+    overflow: hidden;
+    padding: 20px;
+}
+
+/* =====================================================
+   ENCABEZADO
+===================================================== */
+
+.note-card-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    gap: 18px;
+
+    margin-bottom: 22px;
+}
+
+.note-card-header > div {
+    min-width: 0;
+    flex: 1;
+}
+
+/* Fecha */
+
+.note-date {
+    display: inline-block;
+
+    margin-bottom: 8px;
+
+    color: var(--muted);
+
+    font-size: 11px;
+    font-weight: 600;
+}
+
+/* Título */
+
+.note-card-header h3 {
+    margin: 0 0 10px;
+
+    color: var(--blue-dark);
+
+    font-size: 19px;
+    line-height: 1.4;
+
+    overflow-wrap: anywhere;
+}
+
+/* Obra */
+
+.note-work {
+    margin: 0;
+
+    color: var(--muted);
+
+    font-size: 13px;
+    line-height: 1.5;
+
+    overflow-wrap: anywhere;
+}
+
+/* =====================================================
+   BOTÓN ELIMINAR
+===================================================== */
+
+.note-card-header .delete-button {
+    flex-shrink: 0;
+
+    min-height: 38px;
+
+    padding: 9px 14px;
+
+    border: none;
+    border-radius: 8px;
+
+    background: #fff0f0;
+    color: var(--danger);
+
+    font-size: 13px;
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+/* =====================================================
+   AVANCES / PENDIENTES / OBSERVACIONES / DIFICULTADES
+===================================================== */
+
+.note-sections {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 12px;
+
+    margin-bottom: 20px;
+}
+
+.note-sections > div {
+    min-width: 0;
+
+    padding: 15px;
+
+    border: 1px solid var(--border);
+    border-radius: 10px;
+
+    background: #f7f9fb;
+}
+
+.note-sections strong {
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: var(--blue);
+
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.note-sections p {
+    margin: 0;
+
+    color: var(--muted);
+
+    font-size: 13px;
+    line-height: 1.6;
+
+    overflow-wrap: anywhere;
+}
+
+/* =====================================================
+   FOTOGRAFÍA DE OBRA
+===================================================== */
+
+.note-photo {
+    width: 100%;
+    max-width: 420px;
+
+    margin: 20px auto 0;
+
+    padding-top: 16px;
+
+    border-top: 1px solid var(--border);
+}
+
+.note-photo img {
+    display: block;
+
+    width: 100%;
+    height: 230px;
+
+    object-fit: cover;
+
+    border-radius: 10px;
+
+    border: 1px solid var(--border);
+
+    cursor: pointer;
+}
+
+/* =====================================================
+   CELULAR
+===================================================== */
+
+@media (max-width: 650px) {
+
+    .note-card {
+        padding: 16px;
+    }
+
+    .note-card-header {
+        gap: 12px;
+        margin-bottom: 18px;
+    }
+
+    .note-card-header h3 {
+        font-size: 17px;
+    }
+
+    .note-sections {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+
+    .note-sections > div {
+        padding: 13px;
+    }
+
+    .note-photo {
+        max-width: 100%;
+    }
+
+    .note-photo img {
+        height: 190px;
+    }
+
+    .note-card-header .delete-button {
+        padding: 8px 11px;
+        font-size: 12px;
     }
 }
