@@ -5,7 +5,7 @@
 }
 
 :root {
-    --blue-dark: #102a43;
+    --blue-dark: #102a43;  
     --blue: #1769aa;
     --blue-light: #e8f2fb;
     --cyan: #27a9d6;
@@ -3375,5 +3375,1544 @@ textarea {
     .note-card-header .delete-button {
         padding: 8px 11px;
         font-size: 12px;
+    }
+}
+/* =========================================
+   AJUSTE 1 - NOTAS Y COMPROBANTES
+   ========================================= */
+
+/* ===== NOTAS ===== */
+
+.note-card {
+    padding: 20px !important;
+    margin-bottom: 18px !important;
+    border-radius: 14px !important;
+}
+
+.note-card-header {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: flex-start !important;
+    gap: 15px !important;
+    margin-bottom: 15px !important;
+}
+
+.note-sections {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 12px !important;
+    margin-top: 15px !important;
+}
+
+.note-sections > div {
+    padding: 12px !important;
+    background: #f4f7fa !important;
+    border-radius: 10px !important;
+}
+
+.note-photo {
+    display: block !important;
+    width: 100% !important;
+    max-width: 350px !important;
+    height: 190px !important;
+    object-fit: cover !important;
+    border-radius: 10px !important;
+    margin: 15px auto 0 !important;
+}
+
+
+/* ===== COMPROBANTES ===== */
+
+.purchase-card {
+    overflow: hidden !important;
+    border-radius: 14px !important;
+    margin-bottom: 15px !important;
+}
+
+.purchase-card-body {
+    padding: 18px !important;
+}
+
+.purchase-header {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: flex-start !important;
+    gap: 15px !important;
+}
+
+.purchase-info {
+    display: grid !important;
+    gap: 8px !important;
+    margin-top: 15px !important;
+}
+
+.receipt-actions {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 8px !important;
+    margin-top: 15px !important;
+}
+
+.receipt-actions button,
+.receipt-actions .secondary-action {
+    width: auto !important;
+}
+@media (max-width: 650px) {
+
+    .note-sections {
+        grid-template-columns: 1fr !important;
+    }
+
+    .note-photo {
+        max-width: 100% !important;
+        height: 170px !important;
+    }
+
+    .note-card-header,
+    .purchase-header {
+        flex-direction: column !important;
+    }
+
+    .receipt-actions {
+        flex-direction: column !important;
+    }
+
+    .receipt-actions button,
+    .receipt-actions .secondary-action {
+        width: 100% !important;
+    }
+}
+/* =========================================
+   FOTOGRAFÍAS DE OBRAS - AJUSTE
+   ========================================= */
+
+/* =========================================
+   FOTOGRAFÍAS DE OBRAS
+   ========================================= */
+
+.photo-card {
+    overflow: hidden !important;
+    border-radius: 14px !important;
+    padding: 0 !important;
+}
+
+.photo-image {
+    width: 100% !important;
+    height: 220px !important;
+    overflow: hidden !important;
+    margin: 0 !important;
+    border-radius: 14px 14px 0 0 !important;
+}
+
+.photo-image img {
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+}
+
+.photo-card-body {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+    padding: 20px !important;
+}
+
+.photo-date {
+    display: block !important;
+    margin: 0 !important;
+    font-size: 13px !important;
+}
+
+.photo-card-body h3 {
+    margin: 0 !important;
+}
+
+.photo-card-body p {
+    margin: 0 !important;
+    line-height: 1.5 !important;
+}
+
+.photo-card-body .delete-button {
+    margin-top: 6px !important;
+    align-self: flex-start !important;
+}
+
+/* En pantallas grandes: fotografías más compactas */
+@media (min-width: 900px) {
+    .photo-card {
+        max-width: 380px !important;
+    }
+
+    .photo-image {
+        height: 210px !important;
+    }
+}
+
+
+/* En celular */
+@media (max-width: 650px) {
+    .photo-card {
+        width: 100% !important;
+    }
+
+    .photo-image {
+        height: 180px !important;
+    }
+}
+/* =========================================
+   FOTOGRAFÍAS DE OBRAS - ORDEN Y ESPACIADO
+   ========================================= */
+
+.photo-card {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0 !important;
+    overflow: hidden !important;
+    border-radius: 14px !important;
+}
+
+.photo-image {
+    display: block !important;
+    width: 100% !important;
+    height: 220px !important;
+    object-fit: cover !important;
+    margin: 0 !important;
+    border-radius: 14px 14px 0 0 !important;
+}
+
+.photo-card-body {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+    padding: 18px !important;
+}
+
+.photo-card-body p {
+    margin: 0 !important;
+    line-height: 1.5 !important;
+}
+
+.photo-date {
+    margin: 0 !important;
+    padding-top: 5px !important;
+}
+
+.photo-card-body .delete-button {
+    margin-top: 6px !important;
+    align-self: flex-start !important;
+}
+/* =========================================
+   FOTOGRAFÍAS DE OBRAS - DISEÑO
+   ========================================= */
+
+.photo-card {
+    overflow: hidden !important;
+    border-radius: 16px !important;
+}
+
+.photo-image {
+    width: 100% !important;
+    height: 220px !important;
+    overflow: hidden !important;
+    margin: 0 !important;
+}
+
+.photo-image img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    display: block !important;
+}
+
+.photo-card-body {
+    display: flex !important;
+    flex-direction: column !important;
+    padding: 20px !important;
+    gap: 12px !important;
+}
+
+.photo-card-body .photo-date {
+    display: block !important;
+    margin: 0 0 2px 0 !important;
+}
+
+.photo-card-body h3 {
+    margin: 0 !important;
+    line-height: 1.3 !important;
+}
+
+.photo-card-body p {
+    margin: 0 !important;
+    line-height: 1.5 !important;
+}
+
+.photo-card-body .delete-button {
+    margin-top: 8px !important;
+    align-self: flex-start !important;
+}
+
+/* ==========================================
+   AJUSTE DE ESPACIADO: COMPRAS Y FOTOGRAFÍAS
+   ========================================== */
+
+/* COMPRAS Y COMPROBANTES */
+#documentos > .subsection-heading {
+    margin-top: 32px !important;
+    margin-bottom: 20px !important;
+    padding-top: 24px !important;
+    border-top: 1px solid var(--border) !important;
+}
+
+#purchasesContainer {
+    margin-top: 18px !important;
+    gap: 20px !important;
+}
+
+/* Contenido de cada compra */
+.purchase-card {
+    margin-bottom: 20px !important;
+}
+
+.purchase-card-body {
+    padding: 22px !important;
+}
+
+.purchase-info {
+    gap: 12px !important;
+    margin-top: 18px !important;
+}
+
+.receipt-actions {
+    gap: 10px !important;
+    margin-top: 18px !important;
+}
+
+/* FOTOGRAFÍAS DE OBRA */
+#notas > .subsection-heading {
+    margin-top: 34px !important;
+    margin-bottom: 20px !important;
+    padding-top: 24px !important;
+    border-top: 1px solid var(--border) !important;
+}
+
+#photosContainer {
+    margin-top: 18px !important;
+    gap: 22px !important;
+}
+
+/* Espaciado interno de las tarjetas fotográficas */
+.photo-card-body {
+    padding: 22px !important;
+    gap: 14px !important;
+}
+
+.photo-card-body .photo-date {
+    margin-bottom: 4px !important;
+}
+
+.photo-card-body h3 {
+    margin-bottom: 2px !important;
+}
+
+.photo-card-body .delete-button {
+    margin-top: 8px !important;
+}
+
+/* Ajustes para celulares */
+@media (max-width: 650px) {
+    #documentos > .subsection-heading,
+    #notas > .subsection-heading {
+        margin-top: 26px !important;
+        margin-bottom: 18px !important;
+        padding-top: 20px !important;
+    }
+
+    #purchasesContainer,
+    #photosContainer {
+        gap: 16px !important;
+    }
+
+    .purchase-card-body,
+    .photo-card-body {
+        padding: 16px !important;
+    }
+}
+/* =====================================================
+   AJUSTE DEFINITIVO - COMPRAS, COMPROBANTES Y FOTOGRAFÍAS
+===================================================== */
+
+/* =====================================================
+   CONTENEDOR DE COMPRAS
+===================================================== */
+
+#purchasesContainer {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+    width: 100% !important;
+    margin-top: 18px !important;
+}
+
+
+/* =====================================================
+   TARJETA DE COMPRA
+===================================================== */
+
+.purchase-card {
+    width: 100% !important;
+    min-width: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+
+    overflow: hidden !important;
+
+    background: var(--white) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: 14px !important;
+
+    box-shadow: var(--shadow) !important;
+}
+
+
+/* Contenido */
+
+.purchase-card-body {
+    width: 100% !important;
+    padding: 22px !important;
+}
+
+
+/* Encabezado */
+
+.purchase-header {
+    display: flex !important;
+    align-items: flex-start !important;
+    justify-content: space-between !important;
+
+    gap: 18px !important;
+
+    width: 100% !important;
+}
+
+.purchase-header > div {
+    min-width: 0 !important;
+    flex: 1 !important;
+}
+
+.purchase-header h3 {
+    margin: 0 0 7px !important;
+
+    color: var(--blue-dark) !important;
+    font-size: 18px !important;
+    line-height: 1.4 !important;
+
+    overflow-wrap: anywhere !important;
+}
+
+.purchase-date {
+    display: block !important;
+
+    color: var(--muted) !important;
+    font-size: 12px !important;
+}
+
+
+/* =====================================================
+   INFORMACIÓN DE LA COMPRA
+===================================================== */
+
+.purchase-info {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+
+    gap: 10px !important;
+
+    width: 100% !important;
+
+    margin-top: 18px !important;
+}
+
+.purchase-info span {
+    display: block !important;
+
+    min-width: 0 !important;
+
+    padding: 12px !important;
+
+    border: 1px solid var(--border) !important;
+    border-radius: 9px !important;
+
+    background: #f7f9fb !important;
+
+    color: var(--muted) !important;
+
+    font-size: 12px !important;
+    line-height: 1.5 !important;
+
+    overflow-wrap: anywhere !important;
+}
+
+.purchase-info strong {
+    display: block !important;
+
+    margin-top: 4px !important;
+
+    color: var(--blue-dark) !important;
+    font-size: 14px !important;
+}
+
+
+/* =====================================================
+   BOTONES DE COMPROBANTE
+===================================================== */
+
+.receipt-actions {
+    display: flex !important;
+    align-items: center !important;
+
+    gap: 10px !important;
+
+    width: 100% !important;
+
+    margin-top: 18px !important;
+    padding-top: 16px !important;
+
+    border-top: 1px solid var(--border) !important;
+}
+
+
+/* VER COMPROBANTE Y DESCARGAR */
+
+.receipt-actions .secondary-action {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    min-height: 40px !important;
+    min-width: 125px !important;
+
+    padding: 10px 16px !important;
+
+    border: 1px solid #c7dff1 !important;
+    border-radius: 8px !important;
+
+    background: var(--blue-light) !important;
+    color: var(--blue) !important;
+
+    font-size: 13px !important;
+    font-weight: 700 !important;
+
+    cursor: pointer !important;
+
+    transition: 0.2s ease !important;
+}
+
+.receipt-actions .secondary-action:hover {
+    background: var(--blue) !important;
+    border-color: var(--blue) !important;
+    color: var(--white) !important;
+
+    transform: translateY(-1px) !important;
+}
+
+
+/* Botón eliminar de compra */
+
+.purchase-header .delete-button {
+    flex-shrink: 0 !important;
+
+    min-height: 38px !important;
+
+    padding: 9px 14px !important;
+
+    border: none !important;
+    border-radius: 8px !important;
+
+    background: #fff0f0 !important;
+    color: var(--danger) !important;
+
+    font-size: 13px !important;
+    font-weight: 700 !important;
+}
+
+.purchase-header .delete-button:hover {
+    background: var(--danger) !important;
+    color: var(--white) !important;
+}
+
+
+/* =====================================================
+   CONTENEDOR DE FOTOGRAFÍAS
+===================================================== */
+
+#photosContainer {
+    display: grid !important;
+
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+
+    gap: 22px !important;
+
+    width: 100% !important;
+
+    margin-top: 18px !important;
+}
+
+
+/* =====================================================
+   TARJETA DE FOTOGRAFÍA
+===================================================== */
+
+.photo-card {
+    width: 100% !important;
+    min-width: 0 !important;
+
+    display: flex !important;
+    flex-direction: column !important;
+
+    overflow: hidden !important;
+
+    padding: 0 !important;
+
+    background: var(--white) !important;
+
+    border: 1px solid var(--border) !important;
+    border-radius: 16px !important;
+
+    box-shadow: var(--shadow) !important;
+}
+
+
+/* Imagen */
+
+.photo-image {
+    display: block !important;
+
+    width: 100% !important;
+    height: 220px !important;
+
+    margin: 0 !important;
+
+    overflow: hidden !important;
+
+    border-radius: 16px 16px 0 0 !important;
+}
+
+.photo-image img {
+    display: block !important;
+
+    width: 100% !important;
+    height: 100% !important;
+
+    object-fit: cover !important;
+}
+
+
+/* =====================================================
+   CONTENIDO DE FOTOGRAFÍA
+===================================================== */
+
+.photo-card-body {
+    display: flex !important;
+    flex-direction: column !important;
+
+    gap: 12px !important;
+
+    width: 100% !important;
+
+    padding: 20px !important;
+}
+
+.photo-card-body .photo-date {
+    display: block !important;
+
+    margin: 0 !important;
+
+    color: var(--muted) !important;
+    font-size: 12px !important;
+}
+
+.photo-card-body h3 {
+    margin: 0 !important;
+
+    color: var(--blue-dark) !important;
+
+    font-size: 18px !important;
+    line-height: 1.4 !important;
+
+    overflow-wrap: anywhere !important;
+}
+
+.photo-card-body p {
+    margin: 0 !important;
+
+    color: var(--muted) !important;
+
+    font-size: 13px !important;
+    line-height: 1.6 !important;
+
+    overflow-wrap: anywhere !important;
+}
+
+
+/* Botón eliminar fotografía */
+
+.photo-card-body .delete-button {
+    align-self: flex-start !important;
+
+    margin-top: 6px !important;
+
+    min-height: 38px !important;
+
+    padding: 9px 14px !important;
+
+    border: none !important;
+    border-radius: 8px !important;
+
+    background: #fff0f0 !important;
+    color: var(--danger) !important;
+
+    font-size: 13px !important;
+    font-weight: 700 !important;
+}
+
+.photo-card-body .delete-button:hover {
+    background: var(--danger) !important;
+    color: var(--white) !important;
+}
+
+
+/* =====================================================
+   CELULAR
+===================================================== */
+
+@media (max-width: 650px) {
+
+    /* COMPRAS */
+
+    #purchasesContainer {
+        grid-template-columns: 1fr !important;
+        gap: 16px !important;
+    }
+
+    .purchase-card-body {
+        padding: 16px !important;
+    }
+
+    .purchase-header {
+        flex-direction: column !important;
+        gap: 12px !important;
+    }
+
+    .purchase-header .delete-button {
+        align-self: flex-start !important;
+    }
+
+    .purchase-info {
+        grid-template-columns: 1fr !important;
+    }
+
+    .receipt-actions {
+        flex-direction: column !important;
+        align-items: stretch !important;
+    }
+
+    .receipt-actions .secondary-action {
+        width: 100% !important;
+    }
+
+
+    /* FOTOGRAFÍAS */
+
+    #photosContainer {
+        grid-template-columns: 1fr !important;
+        gap: 16px !important;
+    }
+
+    .photo-image {
+        height: 190px !important;
+    }
+
+    .photo-card-body {
+        padding: 16px !important;
+    }
+
+    .photo-card-body .delete-button {
+        width: 100% !important;
+    }
+}
+/* AJUSTE - ENCABEZADO DE FOTOGRAFÍAS DE OBRA */
+
+#fotos .subsection-heading,
+#fotografias .subsection-heading,
+#photos .subsection-heading {
+    display: block !important;
+    width: 100% !important;
+    margin-bottom: 20px !important;
+    padding: 0 !important;
+}
+
+#fotos .subsection-heading h2,
+#fotografias .subsection-heading h2,
+#photos .subsection-heading h2 {
+    display: block !important;
+    width: 100% !important;
+    margin: 0 0 8px 0 !important;
+    line-height: 1.3 !important;
+}
+
+#fotos .subsection-heading p,
+#fotografias .subsection-heading p,
+#photos .subsection-heading p {
+    display: block !important;
+    width: 100% !important;
+    margin: 0 !important;
+    line-height: 1.5 !important;
+}
+/* =====================================================
+   AJUSTE EXACTO - ENCABEZADO FOTOGRAFÍAS
+===================================================== */
+
+#notas .subsection-heading {
+    display: flex !important;
+    align-items: flex-start !important;
+    justify-content: space-between !important;
+    gap: 30px !important;
+    width: 100% !important;
+    margin-top: 35px !important;
+    margin-bottom: 24px !important;
+    padding: 0 !important;
+}
+
+#notas .subsection-heading > div {
+    flex: 1 1 auto !important;
+    min-width: 0 !important;
+}
+
+#notas .subsection-heading .section-kicker {
+    display: block !important;
+    margin-bottom: 6px !important;
+}
+
+#notas .subsection-heading h3 {
+    display: block !important;
+    margin: 0 0 8px 0 !important;
+    line-height: 1.3 !important;
+    white-space: normal !important;
+}
+
+#notas .subsection-heading p {
+    display: block !important;
+    margin: 0 !important;
+    line-height: 1.5 !important;
+    white-space: normal !important;
+}
+
+#notas .subsection-heading .primary-button {
+    flex: 0 0 auto !important;
+    white-space: nowrap !important;
+    margin: 0 !important;
+}
+
+
+/* En pantallas pequeñas */
+@media (max-width: 700px) {
+
+    #notas .subsection-heading {
+        flex-direction: column !important;
+        align-items: stretch !important;
+        gap: 16px !important;
+    }
+
+    #notas .subsection-heading .primary-button {
+        width: 100% !important;
+    }
+}
+/* =====================================================
+   AJUSTE - ENCABEZADO COMPRAS Y COMPROBANTES
+===================================================== */
+
+#documentos .subsection-heading {
+    display: flex !important;
+    align-items: flex-start !important;
+    justify-content: space-between !important;
+    gap: 30px !important;
+    width: 100% !important;
+    margin-top: 35px !important;
+    margin-bottom: 24px !important;
+    padding: 0 !important;
+}
+
+#documentos .subsection-heading > div {
+    flex: 1 1 auto !important;
+    min-width: 0 !important;
+}
+
+#documentos .subsection-heading .section-kicker {
+    display: block !important;
+    margin-bottom: 6px !important;
+}
+
+#documentos .subsection-heading h3 {
+    display: block !important;
+    margin: 0 0 8px 0 !important;
+    line-height: 1.3 !important;
+    white-space: normal !important;
+}
+
+#documentos .subsection-heading p {
+    display: block !important;
+    margin: 0 !important;
+    line-height: 1.5 !important;
+    white-space: normal !important;
+}
+
+#documentos .subsection-heading .primary-button {
+    flex: 0 0 auto !important;
+    white-space: nowrap !important;
+    margin: 0 !important;
+}
+
+
+/* En pantallas pequeñas */
+@media (max-width: 700px) {
+
+    #documentos .subsection-heading {
+        flex-direction: column !important;
+        align-items: stretch !important;
+        gap: 16px !important;
+    }
+
+    #documentos .subsection-heading .primary-button {
+        width: 100% !important;
+    }
+}
+
+/* =====================================================
+   FORMULARIO DE REPORTES SEMANALES
+===================================================== */
+
+#noteModal .modal-content {
+    width: min(720px, 95%);
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 28px;
+}
+
+#noteModal .modal-content h2 {
+    margin-bottom: 8px;
+    color: var(--blue-dark);
+}
+
+#noteModal .modal-content h3 {
+    margin: 18px 0 8px;
+    color: var(--blue-dark);
+}
+
+#noteModal .modal-content p {
+    line-height: 1.5;
+}
+
+#noteForm {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+#noteForm > label {
+    margin-top: 8px;
+}
+
+#noteForm input:not([type="checkbox"]):not([type="file"]),
+#noteForm select,
+#noteForm textarea {
+    display: block;
+    margin-top: 2px;
+}
+
+#noteForm textarea {
+    min-height: 85px;
+}
+
+#noteForm hr {
+    width: 100%;
+    border: 0;
+    border-top: 1px solid var(--border);
+    margin: 12px 0;
+}
+
+#noteForm .note-activities {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+    margin: 8px 0;
+}
+
+#noteForm .note-activities label {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    padding: 11px;
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    background: var(--background);
+    font-weight: 500;
+    cursor: pointer;
+}
+
+#noteForm .note-activities input[type="checkbox"] {
+    width: 17px;
+    height: 17px;
+    flex-shrink: 0;
+    accent-color: var(--blue);
+}
+
+#noteForm input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px dashed var(--border);
+    border-radius: 9px;
+    background: var(--background);
+}
+
+#noteForm .file-help {
+    color: var(--muted);
+    font-size: 12px;
+    margin-top: -5px;
+}
+
+#noteForm .primary-button {
+    width: 100%;
+    margin-top: 12px;
+    cursor: pointer;
+}
+
+@media (max-width: 600px) {
+    #noteModal .modal-content {
+        width: 95%;
+        padding: 20px 16px;
+    }
+
+    #noteForm .note-activities {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Más espacio en el formulario de reportes */
+
+#noteModal .modal-content {
+    padding: 32px;
+}
+
+#noteForm {
+    gap: 14px;
+    margin-top: 26px;
+}
+
+#noteForm > label {
+    margin-top: 12px;
+}
+
+#noteForm input:not([type="checkbox"]):not([type="file"]),
+#noteForm select,
+#noteForm textarea {
+    margin-top: 6px;
+}
+
+#noteForm .note-activities {
+    gap: 12px;
+    margin: 12px 0;
+}
+
+#noteForm .note-activities label {
+    padding: 14px;
+}
+
+#noteForm hr {
+    margin: 18px 0;
+}
+
+#noteForm .primary-button {
+    margin-top: 18px;
+    padding: 15px 18px;
+}
+
+@media (max-width: 600px) {
+    #noteModal .modal-content {
+        padding: 22px 16px;
+    }
+}
+
+/* Ordenar el contenido de los reportes semanales */
+
+.note-card {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    padding: 25px;
+}
+
+.note-card-header {
+    align-items: flex-start;
+    margin-bottom: 0;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+}
+
+.note-card-header h3 {
+    margin: 8px 0;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+}
+
+.note-card-header p {
+    margin-top: 8px;
+    line-height: 1.6;
+}
+
+.note-card-header .note-date {
+    display: inline-block;
+    margin-bottom: 4px;
+}
+
+.note-card .note-week {
+    display: inline-block;
+    padding: 5px 10px;
+    margin-top: 10px;
+    border-radius: 7px;
+    background: var(--blue-light);
+    color: var(--blue-dark);
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.note-activities-summary {
+    padding: 15px;
+    border-radius: 10px;
+    background: var(--background);
+}
+
+.note-activities-summary strong {
+    display: block;
+    margin-bottom: 10px;
+    color: var(--blue-dark);
+}
+
+.note-activities-summary ul {
+    padding-left: 22px;
+    margin: 0;
+    line-height: 1.9;
+}
+
+.note-sections {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+}
+
+.note-sections > div {
+    padding: 13px 15px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+}
+
+.note-sections strong {
+    display: block;
+    margin-bottom: 7px;
+    color: var(--blue-dark);
+    line-height: 1.5;
+}
+
+.note-sections p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.7;
+    overflow-wrap: anywhere;
+}
+
+.note-photo {
+    margin-top: 4px;
+}
+
+.note-photo img {
+    display: block;
+    max-width: 100%;
+    max-height: 280px;
+    object-fit: contain;
+    border-radius: 10px;
+}
+
+@media (max-width: 600px) {
+    .notes-container {
+        grid-template-columns: 1fr;
+    }
+
+    .note-card {
+        padding: 18px;
+    }
+
+    .note-card-header {
+        flex-wrap: wrap;
+    }
+}
+
+/* =========================================
+   REPORTES SEMANALES DE CADA OBRA
+========================================= */
+
+.work-reports-view {
+    width: 100%;
+    margin-top: 25px;
+}
+
+.work-reports-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 25px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.work-reports-heading h2 {
+    margin: 6px 0;
+    color: #1e293b;
+}
+
+.work-reports-heading p {
+    color: #64748b;
+    margin-top: 5px;
+}
+
+.work-reports-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+
+.work-report-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 4px 15px rgba(15, 23, 42, 0.05);
+    min-width: 0;
+}
+
+.work-report-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-bottom: 15px;
+}
+
+.work-report-header h3 {
+    color: #1e293b;
+    font-size: 20px;
+    margin-top: 7px;
+    overflow-wrap: anywhere;
+}
+
+.work-report-week {
+    background: #e8f1ff;
+    color: #2458a6;
+    padding: 8px 13px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.work-report-date {
+    color: #64748b;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+.work-report-activities {
+    background: #f1f6fc;
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 20px;
+}
+
+.work-report-activities strong {
+    color: #1e293b;
+}
+
+.work-report-activities p {
+    color: #475569;
+    margin-top: 7px;
+    overflow-wrap: anywhere;
+}
+
+.work-report-sections {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 15px;
+}
+
+.work-report-sections > div {
+    background: #fafcff;
+    border: 1px solid #edf1f6;
+    border-radius: 12px;
+    padding: 16px;
+    min-width: 0;
+}
+
+.work-report-sections h4 {
+    color: #2458a6;
+    font-size: 15px;
+    margin-bottom: 8px;
+}
+
+.work-report-sections p {
+    color: #475569;
+    font-size: 14px;
+    line-height: 1.7;
+    overflow-wrap: anywhere;
+    white-space: pre-wrap;
+}
+
+.work-report-photo {
+    margin-top: 20px;
+}
+
+.work-report-photo img {
+    display: block;
+    width: 100%;
+    max-width: 500px;
+    max-height: 350px;
+    object-fit: contain;
+    object-position: left center;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+    background: #f8fafc;
+}
+
+.work-reports-link {
+    margin-top: 18px;
+    padding-top: 16px;
+    border-top: 1px solid #e2e8f0;
+}
+
+.work-reports-link p {
+    color: #64748b;
+    margin-bottom: 12px;
+}
+
+.work-reports-link button {
+    max-width: 100%;
+}
+
+@media (max-width: 600px) {
+    .work-reports-heading {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .work-reports-heading button {
+        width: 100%;
+    }
+
+    .work-report-card {
+        padding: 17px;
+    }
+
+    .work-report-sections {
+        grid-template-columns: 1fr;
+    }
+
+    .work-report-header h3 {
+        font-size: 18px;
+    }
+}
+
+/* =========================================
+   DETALLES DEL PRESUPUESTO DE CADA OBRA
+========================================= */
+
+.work-budget-details {
+    margin-top: 18px;
+    border: 1px solid #dbe5f1;
+    border-radius: 14px;
+    background: #f8faff;
+    overflow: hidden;
+    transition: box-shadow 0.25s ease;
+}
+
+.work-budget-details[open] {
+    box-shadow: 0 5px 18px rgba(30, 64, 110, 0.08);
+    border-color: #b9cdea;
+}
+
+.work-budget-details > summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 16px 18px;
+    color: #2458a6;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    list-style: none;
+    transition: background 0.2s ease;
+}
+
+.work-budget-details > summary::-webkit-details-marker {
+    display: none;
+}
+
+.work-budget-details > summary::after {
+    content: "+";
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 27px;
+    height: 27px;
+    border-radius: 8px;
+    background: #e5eeff;
+    color: #2458a6;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.work-budget-details[open] > summary::after {
+    content: "−";
+}
+
+.work-budget-details > summary:hover {
+    background: #eef4ff;
+}
+
+.work-budget-breakdown {
+    display: grid;
+    gap: 0;
+    padding: 0 18px 12px;
+}
+
+.work-budget-breakdown > div {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 13px 0;
+    border-bottom: 1px solid #e6edf5;
+}
+
+.work-budget-breakdown > div:last-child {
+    border-bottom: none;
+}
+
+.work-budget-breakdown span {
+    color: #64748b;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.work-budget-breakdown strong {
+    color: #1e293b;
+    font-size: 14px;
+    font-weight: 700;
+    text-align: right;
+    overflow-wrap: anywhere;
+}
+
+.work-budget-breakdown .work-budget-total {
+    margin-top: 4px;
+    padding-top: 16px;
+    border-top: 1px solid #cbd8e8;
+}
+
+.work-budget-breakdown .work-budget-total span,
+.work-budget-breakdown .work-budget-total strong {
+    color: #2458a6;
+    font-weight: 800;
+}
+
+.work-budget-breakdown .negative-value {
+    color: #dc2626;
+}
+
+/* Resumen principal del presupuesto */
+
+.budget-summary {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+    margin-top: 18px;
+}
+
+.budget-summary > div {
+    min-width: 0;
+    padding: 14px 12px;
+    background: #f1f5fb;
+    border: 1px solid #e5ebf4;
+    border-radius: 12px;
+}
+
+.budget-summary span {
+    display: block;
+    margin-bottom: 7px;
+    color: #64748b;
+    font-size: 12px;
+    line-height: 1.4;
+}
+
+.budget-summary strong {
+    display: block;
+    color: #1e293b;
+    font-size: 15px;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+}
+
+.budget-summary .negative-value {
+    color: #dc2626;
+}
+
+/* Ajustes para pantallas pequeñas */
+
+@media (max-width: 520px) {
+    .budget-summary {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+
+    .budget-summary > div {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 12px 14px;
+    }
+
+    .budget-summary span {
+        margin-bottom: 0;
+        font-size: 12px;
+    }
+
+    .budget-summary strong {
+        text-align: right;
+        font-size: 14px;
+    }
+
+    .work-budget-details > summary {
+        padding: 14px;
+    }
+
+    .work-budget-breakdown {
+        padding: 0 14px 10px;
+    }
+
+    .work-budget-breakdown > div {
+        gap: 10px;
     }
 }

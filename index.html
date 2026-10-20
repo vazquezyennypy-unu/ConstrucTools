@@ -605,6 +605,28 @@
         id="worksContainer"
         class="cards-grid">
       </div>
+      
+    <!-- DETALLE DE REPORTES DE UNA OBRA -->
+      <div id="workReportsView" class="work-reports-view hidden">
+
+      <div class="work-reports-heading">
+      <div>
+      <span class="section-kicker">SEGUIMIENTO DE OBRA</span>
+      <h2 id="workReportsTitle">Reportes semanales</h2>
+      <p>Consultá los avances y las actividades registradas.</p>
+    </div>
+
+    <button
+      type="button"
+      class="primary-button"
+      onclick="closeWorkReports()">
+      Volver a Mis obras
+    </button>
+  </div>
+
+  <div id="workReportsContainer" class="work-reports-container"></div>
+
+</div>
 
     </section>
 
@@ -732,6 +754,12 @@
           class="calculator-tab"
           onclick="showCalculatorTab('conversion', this)">
           Mediciones
+        </button>
+        
+        <button
+         class="calculator-tab"
+        onclick="showCalculatorTab('metric', this)">
+        Cómputo métrico
         </button>
 
       </div>
@@ -1086,6 +1114,188 @@
       </div>
 
     </section>
+    
+      <!-- CÓMPUTO MÉTRICO -->
+
+      <div
+        id="metricCalculator"
+        class="calculator-panel hidden">
+
+        <div class="conversion-grid">
+
+          <!-- LONGITUD -->
+
+          <div class="conversion-card">
+
+            <h3>Cómputo de longitud</h3>
+
+            <label for="metricLength">
+              Longitud por elemento (m)
+            </label>
+
+            <input
+              type="number"
+              id="metricLength"
+              min="0"
+              step="any"
+              placeholder="Ej.: 5">
+
+            <label for="metricLengthQuantity">
+              Cantidad de elementos
+            </label>
+
+            <input
+              type="number"
+              id="metricLengthQuantity"
+              min="1"
+              step="1"
+              value="1">
+
+            <button
+              type="button"
+              class="primary-button"
+              onclick="calculateMetricLength()">
+              Calcular longitud
+            </button>
+
+            <div
+              id="metricLengthResult"
+              class="conversion-result"
+              aria-live="polite">
+              Resultado en metros lineales
+            </div>
+
+          </div>
+
+
+          <!-- ÁREA -->
+
+          <div class="conversion-card">
+
+            <h3>Cómputo de superficie</h3>
+
+            <label for="metricAreaLength">
+              Largo (m)
+            </label>
+
+            <input
+              type="number"
+              id="metricAreaLength"
+              min="0"
+              step="any"
+              placeholder="Ej.: 5">
+
+            <label for="metricAreaWidth">
+              Ancho (m)
+            </label>
+
+            <input
+              type="number"
+              id="metricAreaWidth"
+              min="0"
+              step="any"
+              placeholder="Ej.: 3">
+
+            <label for="metricAreaQuantity">
+              Cantidad de superficies iguales
+            </label>
+
+            <input
+              type="number"
+              id="metricAreaQuantity"
+              min="1"
+              step="1"
+              value="1">
+
+            <button
+              type="button"
+              class="primary-button"
+              onclick="calculateMetricArea()">
+              Calcular superficie
+            </button>
+
+            <div
+              id="metricAreaResult"
+              class="conversion-result"
+              aria-live="polite">
+              Resultado en metros cuadrados
+            </div>
+
+          </div>
+
+
+          <!-- VOLUMEN -->
+
+          <div class="conversion-card">
+
+            <h3>Cómputo de volumen</h3>
+
+            <label for="metricVolumeLength">
+              Largo (m)
+            </label>
+
+            <input
+              type="number"
+              id="metricVolumeLength"
+              min="0"
+              step="any"
+              placeholder="Ej.: 4">
+
+            <label for="metricVolumeWidth">
+              Ancho (m)
+            </label>
+
+            <input
+              type="number"
+              id="metricVolumeWidth"
+              min="0"
+              step="any"
+              placeholder="Ej.: 2">
+
+            <label for="metricVolumeHeight">
+              Alto o espesor (m)
+            </label>
+
+            <input
+              type="number"
+              id="metricVolumeHeight"
+              min="0"
+              step="any"
+              placeholder="Ej.: 0,15">
+
+            <label for="metricVolumeQuantity">
+              Cantidad de elementos iguales
+            </label>
+
+            <input
+              type="number"
+              id="metricVolumeQuantity"
+              min="1"
+              step="1"
+              value="1">
+
+            <button
+              type="button"
+              class="primary-button"
+              onclick="calculateMetricVolume()">
+              Calcular volumen
+            </button>
+
+            <div
+              id="metricVolumeResult"
+              class="conversion-result"
+              aria-live="polite">
+              Resultado en metros cúbicos
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
 
 
     <!-- =================================================
@@ -1669,14 +1879,12 @@
 </div>
 
 
+
 <!-- =====================================================
-     MODAL NOTA
+     MODAL NOTA Y REPORTE SEMANAL
 ===================================================== -->
 
-<div
-  id="noteModal"
-  class="modal hidden">
-
+<div id="noteModal" class="modal hidden">
   <div class="modal-content">
 
     <button
@@ -1685,82 +1893,102 @@
       ×
     </button>
 
-    <h2>
-      Nueva nota o reporte
-    </h2>
+    <h2>Nuevo reporte semanal</h2>
+    <p>Registrá el avance de una obra y sus actividades.</p>
 
     <form id="noteForm">
 
-      <label>
-        Título
-      </label>
-
+      <label for="noteTitle">Título del reporte</label>
       <input
         type="text"
         id="noteTitle"
+        placeholder="Ej.: Avances de la primera semana"
         required>
 
+      <label for="noteWork">Obra</label>
+      <select id="noteWork" required>
+        <option value="">Seleccioná una obra</option>
+      </select>
 
-      <label>
-        Obra
-      </label>
-
+      <label for="noteWeek">Número de semana</label>
       <input
-        type="text"
-        id="noteWork"
-        placeholder="Nombre de la obra">
+        type="number"
+        id="noteWeek"
+        min="1"
+        step="1"
+        value="1"
+        required>
 
-
-      <label>
-        Avances
-      </label>
-
-      <textarea
-        id="noteProgress">
-      </textarea>
-
-
-      <label>
-        Pendientes
-      </label>
-
-      <textarea
-        id="notePending">
-      </textarea>
-
-
-      <label>
-        Observaciones
-      </label>
-
-      <textarea
-        id="noteObservations">
-      </textarea>
-
-
-      <label>
-        Dificultades
-      </label>
-
-      <textarea
-        id="noteDifficulties">
-      </textarea>
-
-
-      <label>
-        Fecha
-      </label>
-
+      <label for="noteDate">Fecha del reporte</label>
       <input
         type="date"
         id="noteDate"
         required>
 
+      <hr>
 
-      <label>
-        Fotografía opcional
-      </label>
+      <h3>Actividades de la semana</h3>
+      <p>Marcá las actividades que se realizaron.</p>
 
+      <div class="note-activities">
+        <label>
+          <input type="checkbox" name="noteActivities" value="Limpieza general">
+          Limpieza general
+        </label>
+
+        <label>
+          <input type="checkbox" name="noteActivities" value="Mediciones">
+          Mediciones
+        </label>
+
+        <label>
+          <input type="checkbox" name="noteActivities" value="Marcación">
+          Marcación
+        </label>
+
+        <label>
+          <input type="checkbox" name="noteActivities" value="Replanteo">
+          Replanteo
+        </label>
+
+        <label>
+          <input type="checkbox" name="noteActivities" value="Preparación del obrador">
+          Preparación del obrador
+        </label>
+
+        <label>
+          <input type="checkbox" name="noteActivities" value="Otra actividad">
+          Otra actividad
+        </label>
+      </div>
+
+      <hr>
+
+      <label for="noteProgress">Avances realizados</label>
+      <textarea
+        id="noteProgress"
+        placeholder="¿Qué trabajos se completaron?">
+      </textarea>
+
+      <label for="notePending">Pendientes y próximos trabajos</label>
+      <textarea
+        id="notePending"
+        placeholder="¿Qué falta realizar o qué sigue?">
+      </textarea>
+
+      <label for="noteObservations">Observaciones</label>
+      <textarea
+        id="noteObservations"
+        placeholder="Detalles importantes de la semana...">
+      </textarea>
+
+      <label for="noteDifficulties">Dificultades</label>
+      <textarea
+        id="noteDifficulties"
+        placeholder="Problemas encontrados o situaciones que dificultaron el trabajo...">
+      </textarea>
+
+      <label for="notePhoto">Fotografía opcional</label>
       <input
         type="file"
         id="notePhoto"
@@ -1770,18 +1998,16 @@
         Podés adjuntar una fotografía relacionada con el reporte.
       </p>
 
-
       <button
         type="submit"
         class="primary-button">
-        Guardar nota
+        Guardar reporte
       </button>
 
     </form>
-
   </div>
-
 </div>
+
 
 
 <!-- =====================================================
@@ -1810,11 +2036,9 @@
         Obra
       </label>
 
-      <input
-        type="text"
-        id="photoWork"
-        placeholder="Nombre de la obra"
-        required>
+      <select id="photoWork" required>
+      <option value="">Seleccioná una obra</option>
+      </select>
 
 
       <label>
@@ -1916,10 +2140,9 @@
         Obra
       </label>
 
-      <input
-        type="text"
-        id="eventWork"
-        placeholder="Nombre de la obra">
+      <select id="eventWork">
+        <option value="">Seleccioná una obras</option>
+      </select>
 
 
       <label>
@@ -1981,11 +2204,9 @@
         Obra
       </label>
 
-      <input
-        type="text"
-        id="documentWork"
-        placeholder="Nombre de la obra">
-
+        <select id="documentWork">
+          <option value="">Seleccioná una obra</option>
+        </select>
 
       <label>
         Tipo
@@ -2088,11 +2309,9 @@
         Obra
       </label>
 
-      <input
-        type="text"
-        id="purchaseWork"
-        placeholder="Nombre de la obra"
-        required>
+      <select id="purchaseWork" required>
+        <option value="">Seleccioná una obra</option>
+      </select>
 
 
       <label>
@@ -2297,10 +2516,9 @@
         Obra
       </label>
 
-      <input
-        type="text"
-        id="materialWork"
-        placeholder="Nombre de la obra">
+        <select id="materialWork">
+          <option value="">Seleccioná una obra</option>
+        </select>
 
 
       <label>
@@ -2369,13 +2587,15 @@
         required>
 
 
-      <label>
+      
+      <label for="taskWork">
         Obra
       </label>
 
-      <input
-        type="text"
-        id="taskWork">
+      <select id="taskWork">
+        <option value="">Seleccioná una obra</option>
+      </select>
+
 
 
       <label>

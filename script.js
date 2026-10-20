@@ -98,15 +98,16 @@ document.addEventListener("DOMContentLoaded", () => {
 ===================================================== */
 
 function startConstrucTools() {
+  const welcomeScreen = document.getElementById("welcomeScreen");
+  const roleScreen = document.getElementById("roleScreen");
 
-  document
-    .getElementById("welcomeScreen")
-    ?.classList.add("hidden");
+  if (welcomeScreen) {
+    welcomeScreen.classList.add("hidden");
+  }
 
-  document
-    .getElementById("roleScreen")
-    ?.classList.remove("hidden");
-
+  if (roleScreen) {
+    roleScreen.classList.remove("hidden");
+  }
 }
 
 
@@ -660,61 +661,56 @@ function saveAccount(event) {
    OBRAS
 ===================================================== */
 
-function saveWork(event) {
 
+let editingWorkId = null;
+
+function saveWork(event) {
   event.preventDefault();
 
   const work = {
-
-    id: Date.now(),
-
-    name:
-      document.getElementById("obraName").value.trim(),
-
-    location:
-      document.getElementById("obraLocation").value.trim(),
-
-    status:
-      document.getElementById("obraStatus").value,
-
-    currency:
-      document.getElementById("obraCurrency").value,
-
+    name: document.getElementById("obraName").value.trim(),
+    location: document.getElementById("obraLocation").value.trim(),
+    status: document.getElementById("obraStatus").value,
+    currency: document.getElementById("obraCurrency").value,
     budget: {
-
       estimated:
-        Number(
-          document.getElementById("obraBudget").value
-        ) || 0,
-
+        Number(document.getElementById("obraBudget").value) || 0,
       labor:
-        Number(
-          document.getElementById("obraLabor").value
-        ) || 0,
-
+        Number(document.getElementById("obraLabor").value) || 0,
       other:
-        Number(
-          document.getElementById("obraOtherExpenses").value
-        ) || 0
-
+        Number(document.getElementById("obraOtherExpenses").value) || 0
     }
-
   };
 
+  if (editingWorkId !== null) {
+    const existingWork = data.works.find(
+      item => item.id === editingWorkId
+    );
 
-  data.works.push(work);
+    if (!existingWork) {
+      alert("No se encontró la obra que querés editar.");
+      return;
+    }
+
+    existingWork.name = work.name;
+    existingWork.location = work.location;
+    existingWork.status = work.status;
+    existingWork.currency = work.currency;
+    existingWork.budget = work.budget;
+
+    editingWorkId = null;
+  } else {
+    work.id = Date.now();
+    data.works.push(work);
+  }
 
   saveData();
 
-  document
-    .getElementById("obraForm")
-    .reset();
-
+  document.getElementById("obraForm").reset();
   closeModal("obraModal");
-
   renderEverything();
-
 }
+
 
 
 function getWorkPurchasesTotal(workName) {
@@ -753,187 +749,179 @@ function getWorkExpenses(work) {
 }
 
 
-function renderWorks() {
 
-  const container =
-    document.getElementById("worksContainer");
+function renderWorks() {
+  const container = document.getElementById("worksContainer");
 
   if (!container) return;
 
-
   if (!data.works.length) {
-
-    container.innerHTML =
-      `<p class="empty-message">
+    container.innerHTML = `
+      <p class="empty-message">
         Todavía no hay obras registradas.
-      </p>`;
-
+      </p>
+    `;
     return;
-
   }
 
+  container.innerHTML = data.works.map(work => {
+    const budget = work.budget || {};
 
-  container.innerHTML =
-    data.works.map(work => {
+    const estimated = Number(budget.estimated || 0);
+    const materialsCost = getWorkPurchasesTotal(work.name);
+    const laborCost = Number(budget.labor || 0);
+    const otherCost = Number(budget.other || 0);
 
-      const budget =
-        work.budget || {};
+    const spent = getWorkExpenses(work);
+    const remaining = estimated - spent;
+    const currency = work.currency || "PYG";
 
-      const estimated =
-        Number(budget.estimated || 0);
+    const materialCount = data.materials.filter(
+      material =>
+        normalizeText(material.work) === normalizeText(work.name)
+    ).length;
 
-      const spent =
-        getWorkExpenses(work);
+    const taskCount = data.tasks.filter(
+      task =>
+        normalizeText(task.work) === normalizeText(work.name)
+    ).length;
 
-      const remaining =
-        estimated - spent;
+    const documentCount = data.documents.filter(
+      document =>
+        normalizeText(document.work) === normalizeText(work.name)
+    ).length;
 
-      const currency =
-        work.currency || "PYG";
+    const purchaseCount = data.purchases.filter(
+      purchase =>
+        normalizeText(purchase.work) === normalizeText(work.name)
+    ).length;
 
+    return `
+      <article class="work-card">
 
-      const materialCount =
-        data.materials.filter(
-          material =>
-            normalizeText(material.work) ===
-            normalizeText(work.name)
-        ).length;
+        <div class="work-card-cover">
+          <div class="work-icon">CT</div>
+        </div>
 
+        <div class="work-card-body">
 
-      const taskCount =
-        data.tasks.filter(
-          task =>
-            normalizeText(task.work) ===
-            normalizeText(work.name)
-        ).length;
-
-
-      const documentCount =
-        data.documents.filter(
-          document =>
-            normalizeText(document.work) ===
-            normalizeText(work.name)
-        ).length;
-
-
-      const purchaseCount =
-        data.purchases.filter(
-          purchase =>
-            normalizeText(purchase.work) ===
-            normalizeText(work.name)
-        ).length;
-
-
-      return `
-
-        <article class="work-card">
-
-          <div class="work-card-cover">
-
-            <div class="work-icon">
-              CT
+          <div class="work-card-top">
+            <div>
+              <h3>${escapeHTML(work.name)}</h3>
+              <span class="status-badge">
+                ${escapeHTML(work.status || "Sin estado")}
+              </span>
             </div>
 
+            <div class="work-card-actions">
+
+          <button
+             type="button"
+             class="edit-button"
+             onclick="editWork(${work.id})">
+             Editar
+          </button>
+
+          <button
+             type="button"
+             class="delete-button"
+             onclick="deleteWork(${work.id})">
+             Eliminar
+          </button>
+
+        </div>
           </div>
 
+          <p class="work-location">
+            📍 ${escapeHTML(work.location || "Sin ubicación")}
+          </p>
 
-          <div class="work-card-body">
+          <a
+            class="map-link"
+            href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(work.location || work.name)}"
+            target="_blank"
+            rel="noopener noreferrer">
+            Ver ubicación
+          </a>
 
-            <div class="work-card-top">
-
-              <div>
-
-                <h3>
-                  ${escapeHTML(work.name)}
-                </h3>
-
-                <span class="status-badge">
-                  ${escapeHTML(work.status)}
-                </span>
-
-              </div>
-
-
-              <button
-                class="delete-button"
-                onclick="deleteWork(${work.id})">
-                Eliminar
-              </button>
-
+          <div class="work-summary">
+            <div>
+              <span>Materiales</span>
+              <strong>${materialCount}</strong>
             </div>
 
-
-            <p class="work-location">
-              📍 ${escapeHTML(work.location)}
-            </p>
-
-
-            <a
-              class="map-link"
-              href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(work.location)}"
-              target="_blank">
-              Ver ubicación
-            </a>
-
-
-            <div class="work-summary">
-
-              <div>
-                <span>Materiales</span>
-                <strong>${materialCount}</strong>
-              </div>
-
-              <div>
-                <span>Tareas</span>
-                <strong>${taskCount}</strong>
-              </div>
-
-              <div>
-                <span>Documentos</span>
-                <strong>${documentCount}</strong>
-              </div>
-
-              <div>
-                <span>Compras</span>
-                <strong>${purchaseCount}</strong>
-              </div>
-
+            <div>
+              <span>Tareas</span>
+              <strong>${taskCount}</strong>
             </div>
 
+            <div>
+              <span>Documentos</span>
+              <strong>${documentCount}</strong>
+            </div>
 
-            <div class="budget-summary">
+            <div>
+              <span>Compras</span>
+              <strong>${purchaseCount}</strong>
+            </div>
+          </div>
 
+          <div class="budget-summary">
+            <div>
+              <span>Presupuesto</span>
+              <strong>${formatMoney(estimated, currency)}</strong>
+            </div>
+
+            <div>
+              <span>Total utilizado</span>
+              <strong>${formatMoney(spent, currency)}</strong>
+            </div>
+
+            <div>
+              <span>Saldo disponible</span>
+              <strong class="${remaining < 0 ? "negative-value" : ""}">
+                ${formatMoney(remaining, currency)}
+              </strong>
+            </div>
+          </div>
+
+          <details class="work-budget-details">
+            <summary>Ver detalles del presupuesto</summary>
+
+            <div class="work-budget-breakdown">
               <div>
-                <span>Presupuesto</span>
-                <strong>
-                  ${formatMoney(estimated, currency)}
-                </strong>
+                <span>Materiales y compras</span>
+                <strong>${formatMoney(materialsCost, currency)}</strong>
               </div>
 
               <div>
-                <span>Gastado</span>
-                <strong>
-                  ${formatMoney(spent, currency)}
-                </strong>
+                <span>Mano de obra</span>
+                <strong>${formatMoney(laborCost, currency)}</strong>
               </div>
 
               <div>
-                <span>Restante</span>
+                <span>Otros gastos</span>
+                <strong>${formatMoney(otherCost, currency)}</strong>
+              </div>
+
+              <div class="work-budget-total">
+                <span>Total de gastos</span>
+                <strong>${formatMoney(spent, currency)}</strong>
+              </div>
+
+              <div>
+                <span>Saldo restante</span>
                 <strong class="${remaining < 0 ? "negative-value" : ""}">
                   ${formatMoney(remaining, currency)}
                 </strong>
               </div>
-
             </div>
+          </details>
 
-          </div>
-
-        </article>
-
-      `;
-
-    }).join("");
-
+        </div>
+      </article>
+    `;
+  }).join("");
 }
 
 
@@ -959,206 +947,251 @@ function deleteWork(id) {
 
 }
 
+function editWork(id) {
+  const work = data.works.find(
+    item => item.id === id
+  );
+
+  if (!work) {
+    alert("No se encontró la obra.");
+    return;
+  }
+
+  editingWorkId = work.id;
+
+  document.getElementById("obraName").value =
+    work.name || "";
+
+  document.getElementById("obraLocation").value =
+    work.location || "";
+
+  document.getElementById("obraStatus").value =
+    work.status || "";
+
+  document.getElementById("obraCurrency").value =
+    work.currency || "PYG";
+
+  document.getElementById("obraBudget").value =
+    work.budget?.estimated ?? 0;
+
+  document.getElementById("obraLabor").value =
+    work.budget?.labor ?? 0;
+
+  document.getElementById("obraOtherExpenses").value =
+    work.budget?.other ?? 0;
+
+  const title = document.querySelector(
+    "#obraModal h2, #obraModal h3"
+  );
+
+  if (title) {
+    title.textContent = "Editar obra";
+  }
+
+  openModal("obraModal");
+}
+
 
 /* =====================================================
-   NOTAS Y REPORTES
+   NOTAS Y REPORTES SEMANALES
 ===================================================== */
 
 async function saveNote(event) {
-
   event.preventDefault();
 
-  const photoInput =
-    document.getElementById("notePhoto");
+  const photoInput = document.getElementById("notePhoto");
 
   let photoData = "";
   let photoName = "";
 
-
-  if (
-    photoInput &&
-    photoInput.files &&
-    photoInput.files[0]
-  ) {
-
-    const file =
-      photoInput.files[0];
+  // Guardar fotografía opcional
+  if (photoInput && photoInput.files && photoInput.files[0]) {
+    const file = photoInput.files[0];
 
     if (file.size > 2 * 1024 * 1024) {
-
-      alert(
-        "La fotografía debe pesar menos de 2 MB."
-      );
-
+      alert("La fotografía debe pesar menos de 2 MB.");
       return;
-
     }
 
-    photoData =
-      await fileToDataURL(file);
-
-    photoName =
-      file.name;
-
+    photoData = await fileToDataURL(file);
+    photoName = file.name;
   }
 
+  // Obtener las actividades seleccionadas
+  const activities = Array.from(
+    document.querySelectorAll(
+      'input[name="noteActivities"]:checked'
+    )
+  ).map(input => input.value);
 
+  // Crear el reporte semanal
   const note = {
-
     id: Date.now(),
 
-    title:
-      document.getElementById("noteTitle").value.trim(),
+    title: document.getElementById("noteTitle").value.trim(),
 
-    work:
-      document.getElementById("noteWork").value.trim(),
+    work: document.getElementById("noteWork").value.trim(),
 
-    progress:
-      document.getElementById("noteProgress").value.trim(),
+    week: Number(document.getElementById("noteWeek").value),
 
-    pending:
-      document.getElementById("notePending").value.trim(),
+    activities: activities,
 
-    observations:
-      document.getElementById("noteObservations").value.trim(),
+    progress: document.getElementById("noteProgress").value.trim(),
 
-    difficulties:
-      document.getElementById("noteDifficulties").value.trim(),
+    pending: document.getElementById("notePending").value.trim(),
 
-    date:
-      document.getElementById("noteDate").value,
+    observations: document.getElementById("noteObservations").value.trim(),
+
+    difficulties: document.getElementById("noteDifficulties").value.trim(),
+
+    date: document.getElementById("noteDate").value,
 
     photoData,
     photoName
-
   };
 
-
+  // Agregar y guardar el reporte
   data.notes.push(note);
 
   saveData();
 
-  document
-    .getElementById("noteForm")
-    .reset();
+  document.getElementById("noteForm").reset();
 
   closeModal("noteModal");
 
   renderEverything();
-
 }
+
+
+/* =====================================================
+   MOSTRAR NOTAS Y REPORTES SEMANALES
+===================================================== */
 
 
 function renderNotes() {
-
-  const container =
-    document.getElementById("notesContainer");
+  const container = document.getElementById("notesContainer");
 
   if (!container) return;
 
-
   if (!data.notes.length) {
-
-    container.innerHTML =
-      `<p class="empty-message">
+    container.innerHTML = `
+      <p class="empty-message">
         Todavía no hay notas o reportes registrados.
-      </p>`;
-
+      </p>
+    `;
     return;
-
   }
 
+  // Agrupar los reportes por obra
+  const groupedNotes = {};
 
-  container.innerHTML =
-    data.notes.map(note => `
+  data.notes.forEach(note => {
+    const workName = (note.work || "Sin obra asignada").trim();
+    const key = normalizeText(workName);
 
-      <article class="note-card">
+    if (!groupedNotes[key]) {
+      groupedNotes[key] = {
+        name: workName,
+        reports: []
+      };
+    }
 
-        <div class="note-card-header">
+    groupedNotes[key].reports.push(note);
+  });
 
-          <div>
+  container.innerHTML = Object.values(groupedNotes)
+    .map(group => {
+      const reports = group.reports.sort(
+        (a, b) =>
+          (Number(a.week) || 0) - (Number(b.week) || 0)
+      );
 
-            <span class="note-date">
-              ${formatDate(note.date)}
-            </span>
-
-            <h3>
-              ${escapeHTML(note.title)}
-            </h3>
-
-            ${
-              note.work
-                ? `<p class="note-work">
-                    Obra: ${escapeHTML(note.work)}
-                  </p>`
-                : ""
-            }
-
+      return `
+        <article class="note-card">
+          <div class="note-card-header">
+            <div>
+              <span class="note-date">REPORTES SEMANALES</span>
+              <h3>${escapeHTML(group.name)}</h3>
+              <p class="note-work">
+                ${reports.length} reporte${reports.length === 1 ? "" : "s"} registrado${reports.length === 1 ? "" : "s"}
+              </p>
+            </div>
           </div>
 
+          <div class="grouped-weekly-reports">
+            ${reports.map(note => `
+              <details class="weekly-report-item">
+                <summary>
+                  <span>
+                    Semana ${Number(note.week) > 0 ? Number(note.week) : "—"}
+                    — ${escapeHTML(note.title || "Reporte semanal")}
+                  </span>
+                  <span>${escapeHTML(note.date || "Sin fecha")}</span>
+                </summary>
 
-          <button
-            class="delete-button"
-            onclick="deleteNote(${note.id})">
-            Eliminar
-          </button>
+                <div class="weekly-report-content">
+                  ${
+                    note.activities && note.activities.length
+                      ? `
+                        <div class="note-activities-summary">
+                          <strong>Actividades realizadas</strong>
+                          <ul>
+                            ${note.activities.map(activity => `
+                              <li>${escapeHTML(activity)}</li>
+                            `).join("")}
+                          </ul>
+                        </div>
+                      `
+                      : ""
+                  }
 
-        </div>
+                  <div class="note-sections">
+                    <div>
+                      <strong>Avances realizados</strong>
+                      <p>${escapeHTML(note.progress || "Sin registrar")}</p>
+                    </div>
 
+                    <div>
+                      <strong>Pendientes y próximos trabajos</strong>
+                      <p>${escapeHTML(note.pending || "Sin registrar")}</p>
+                    </div>
 
-        <div class="note-sections">
+                    <div>
+                      <strong>Observaciones</strong>
+                      <p>${escapeHTML(note.observations || "Sin registrar")}</p>
+                    </div>
 
-          <div>
-            <strong>Avances</strong>
-            <p>
-              ${escapeHTML(note.progress || "Sin registrar")}
-            </p>
+                    <div>
+                      <strong>Dificultades</strong>
+                      <p>${escapeHTML(note.difficulties || "Sin registrar")}</p>
+                    </div>
+                  </div>
+
+                  ${
+                    note.photoData
+                      ? `
+                        <div class="note-photo">
+                          <img src="${note.photoData}" alt="Fotografía del reporte semanal">
+                        </div>
+                      `
+                      : ""
+                  }
+
+                  <button
+                    type="button"
+                    class="delete-button"
+                    onclick="deleteNote(${note.id})">
+                    Eliminar este reporte
+                  </button>
+                </div>
+              </details>
+            `).join("")}
           </div>
-
-          <div>
-            <strong>Pendientes</strong>
-            <p>
-              ${escapeHTML(note.pending || "Sin registrar")}
-            </p>
-          </div>
-
-          <div>
-            <strong>Observaciones</strong>
-            <p>
-              ${escapeHTML(note.observations || "Sin registrar")}
-            </p>
-          </div>
-
-          <div>
-            <strong>Dificultades</strong>
-            <p>
-              ${escapeHTML(note.difficulties || "Sin registrar")}
-            </p>
-          </div>
-
-        </div>
-
-
-        ${
-          note.photoData
-            ? `
-              <div class="note-photo">
-
-                <img
-                  src="${note.photoData}"
-                  alt="Fotografía del reporte">
-
-              </div>
-            `
-            : ""
-        }
-
-      </article>
-
-    `).join("");
-
+        </article>
+      `;
+    })
+    .join("");
 }
-
 
 function deleteNote(id) {
 
@@ -2426,7 +2459,91 @@ function deleteMaterial(id) {
   renderEverything();
 
 }
+/* =====================================================
+   CONECTAR OBRAS CON LOS SELECTORES
+===================================================== */
 
+function updateWorkSelect(selectId, placeholder) {
+  const select = document.getElementById(selectId);
+
+  if (!select) return;
+
+  const selectedWork = select.value;
+
+  select.innerHTML = "";
+
+  const firstOption = document.createElement("option");
+  firstOption.value = "";
+  firstOption.textContent = placeholder;
+  select.appendChild(firstOption);
+
+  data.works.forEach(work => {
+    const option = document.createElement("option");
+
+    option.value = work.name;
+    option.textContent = work.name;
+
+    select.appendChild(option);
+  });
+
+  // Conservar la selección si la obra sigue existiendo
+  if (
+    [...select.options].some(
+      option => option.value === selectedWork
+    )
+  ) {
+    select.value = selectedWork;
+  }
+}
+
+function updateTaskWorkOptions() {
+  updateWorkSelect(
+    "taskWork",
+    "Seleccioná una obra"
+  );
+}
+
+function updateNoteWorkOptions() {
+  updateWorkSelect(
+    "noteWork",
+    "Seleccioná una obra"
+  );
+}
+
+function updateMaterialWorkOptions() {
+  updateWorkSelect(
+    "materialWork",
+    "Seleccioná una obra"
+  );
+}
+
+function updateDocumentWorkOptions() {
+  updateWorkSelect(
+    "documentWork",
+    "Seleccioná una obra"
+  );
+}
+
+function updateEventWorkOptions() {
+  updateWorkSelect(
+    "eventWork",
+    "Seleccioná una obra"
+  );
+}
+
+function updatePhotoWorkOptions() {
+  updateWorkSelect(
+    "photoWork",
+    "Seleccioná una obra"
+  );
+}
+
+function updatePurchaseWorkOptions() {
+  updateWorkSelect(
+    "purchaseWork",
+    "Seleccioná una obra"
+  );
+}
 
 /* =====================================================
    TAREAS
@@ -3036,62 +3153,36 @@ function calculateScientific() {
 }
 
 
-function showCalculatorTab(
-  tab,
-  button
-) {
+
+function showCalculatorTab(tab, button) {
+  document
+    .querySelectorAll(".calculator-tab")
+    .forEach(item => {
+      item.classList.remove("active");
+    });
 
   document
-    .querySelectorAll(
-      ".calculator-tab"
-    )
-    .forEach(item =>
-      item.classList.remove(
-        "active"
-      )
-    );
-
-
-  document
-    .querySelectorAll(
-      ".calculator-panel"
-    )
-    .forEach(panel =>
-      panel.classList.add(
-        "hidden"
-      )
-    );
-
+    .querySelectorAll(".calculator-panel")
+    .forEach(panel => {
+      panel.classList.add("hidden");
+    });
 
   if (button) {
-    button.classList.add(
-      "active"
-    );
+    button.classList.add("active");
   }
 
-
   const panels = {
-
-    normal:
-      "normalCalculator",
-
-    scientific:
-      "scientificCalculator",
-
-    conversion:
-      "conversionCalculator"
-
+    normal: "normalCalculator",
+    scientific: "scientificCalculator",
+    conversion: "conversionCalculator",
+    metric: "metricCalculator"
   };
 
+  const selectedPanel = document.getElementById(panels[tab]);
 
-  document
-    .getElementById(
-      panels[tab]
-    )
-    ?.classList.remove(
-      "hidden"
-    );
-
+  if (selectedPanel) {
+    selectedPanel.classList.remove("hidden");
+  }
 }
 
 
@@ -4289,6 +4380,20 @@ function renderEverything() {
 
   renderWorks();
 
+  updateTaskWorkOptions();
+
+  updateNoteWorkOptions();
+
+  updateMaterialWorkOptions();
+
+  updateDocumentWorkOptions();
+
+  updateEventWorkOptions();
+
+  updatePhotoWorkOptions();
+
+  updatePurchaseWorkOptions();
+
   renderNotes();
 
   renderPhotos();
@@ -4311,4 +4416,247 @@ function renderEverything() {
 
   updateStats();
 
+}
+
+
+function viewWorkReports(workId) {
+    const work = data.works.find(
+        item => item.id === workId
+    );
+
+    if (!work) {
+        alert("No se encontró la obra.");
+        return;
+    }
+
+    const reports = data.notes
+        .filter(
+            note =>
+                normalizeText(note.work) ===
+                normalizeText(work.name)
+        )
+        .sort(
+            (a, b) =>
+                (Number(a.week) || 0) -
+                (Number(b.week) || 0)
+        );
+
+    const worksContainer = document.getElementById("worksContainer");
+    const reportsView = document.getElementById("workReportsView");
+    const reportsTitle = document.getElementById("workReportsTitle");
+    const reportsContainer = document.getElementById("workReportsContainer");
+
+    if (!worksContainer || !reportsView || !reportsTitle || !reportsContainer) {
+        alert("No se encontró el espacio para mostrar los reportes.");
+        return;
+    }
+
+    reportsTitle.textContent = `Reportes semanales: ${work.name}`;
+
+    if (reports.length === 0) {
+        reportsContainer.innerHTML = `
+            <div class="empty-state">
+                <h3>Todavía no hay reportes</h3>
+                <p>Registrá un reporte semanal para esta obra y aparecerá aquí.</p>
+            </div>
+        `;
+    } else {
+        reportsContainer.innerHTML = reports.map(note => {
+            const activities = note.activities?.length
+                ? note.activities
+                    .map(activity => escapeHTML(activity))
+                    .join(", ")
+                : "Sin actividades seleccionadas";
+
+            const photo = note.photoData
+                ? `
+                    <div class="work-report-photo">
+                        <img
+                            src="${note.photoData}"
+                            alt="Fotografía del reporte semanal">
+                    </div>
+                `
+                : "";
+
+            return `
+                <article class="work-report-card">
+                    <div class="work-report-header">
+                        <div>
+                            <span class="section-kicker">SEGUIMIENTO SEMANAL</span>
+                            <h3>${escapeHTML(note.title || "Reporte semanal")}</h3>
+                        </div>
+                        <span class="work-report-week">
+                            Semana ${escapeHTML(note.week || "—")}
+                        </span>
+                    </div>
+
+                    <p class="work-report-date">
+                        <strong>Fecha:</strong>
+                        ${escapeHTML(note.date || "Sin fecha")}
+                    </p>
+
+                    <div class="work-report-activities">
+                        <strong>Actividades realizadas</strong>
+                        <p>${activities}</p>
+                    </div>
+
+                    <div class="work-report-sections">
+                        <div>
+                            <h4>Avances</h4>
+                            <p>${escapeHTML(note.progress || "Sin registrar")}</p>
+                        </div>
+
+                        <div>
+                            <h4>Pendientes</h4>
+                            <p>${escapeHTML(note.pending || "Sin registrar")}</p>
+                        </div>
+
+                        <div>
+                            <h4>Observaciones</h4>
+                            <p>${escapeHTML(note.observations || "Sin registrar")}</p>
+                        </div>
+
+                        <div>
+                            <h4>Dificultades</h4>
+                            <p>${escapeHTML(note.difficulties || "Sin registrar")}</p>
+                        </div>
+                    </div>
+
+                    ${photo}
+                </article>
+            `;
+        }).join("");
+    }
+
+    worksContainer.classList.add("hidden");
+    reportsView.classList.remove("hidden");
+}
+
+function closeWorkReports() {
+    document.getElementById("workReportsView")?.classList.add("hidden");
+    document.getElementById("worksContainer")?.classList.remove("hidden");
+}
+
+
+/* =========================================
+   CÓMPUTO MÉTRICO
+========================================= */
+
+// Calcula metros lineales
+function calculateMetricLength() {
+  const length = Number(
+    document.getElementById("metricLength").value
+  );
+
+  const quantity = Number(
+    document.getElementById("metricLengthQuantity").value
+  );
+
+  const result = document.getElementById("metricLengthResult");
+
+  if (
+    document.getElementById("metricLength").value === "" ||
+    document.getElementById("metricLengthQuantity").value === "" ||
+    !Number.isFinite(length) ||
+    !Number.isInteger(quantity) ||
+    length <= 0 ||
+    quantity <= 0
+  ) {
+    result.textContent = "Ingresá una longitud y una cantidad válidas.";
+    return;
+  }
+
+  const total = length * quantity;
+
+  result.textContent =
+    "Total: " + total.toLocaleString("es-PY", {
+      maximumFractionDigits: 3
+    }) + " m lineales";
+}
+
+
+// Calcula metros cuadrados
+function calculateMetricArea() {
+  const length = Number(
+    document.getElementById("metricAreaLength").value
+  );
+
+  const width = Number(
+    document.getElementById("metricAreaWidth").value
+  );
+
+  const quantity = Number(
+    document.getElementById("metricAreaQuantity").value
+  );
+
+  const result = document.getElementById("metricAreaResult");
+
+  if (
+    document.getElementById("metricAreaLength").value === "" ||
+    document.getElementById("metricAreaWidth").value === "" ||
+    document.getElementById("metricAreaQuantity").value === "" ||
+    !Number.isFinite(length) ||
+    !Number.isFinite(width) ||
+    !Number.isInteger(quantity) ||
+    length <= 0 ||
+    width <= 0 ||
+    quantity <= 0
+  ) {
+    result.textContent = "Ingresá medidas y una cantidad válidas.";
+    return;
+  }
+
+  const total = length * width * quantity;
+
+  result.textContent =
+    "Superficie total: " + total.toLocaleString("es-PY", {
+      maximumFractionDigits: 3
+    }) + " m²";
+}
+
+
+// Calcula metros cúbicos
+function calculateMetricVolume() {
+  const length = Number(
+    document.getElementById("metricVolumeLength").value
+  );
+
+  const width = Number(
+    document.getElementById("metricVolumeWidth").value
+  );
+
+  const height = Number(
+    document.getElementById("metricVolumeHeight").value
+  );
+
+  const quantity = Number(
+    document.getElementById("metricVolumeQuantity").value
+  );
+
+  const result = document.getElementById("metricVolumeResult");
+
+  if (
+    document.getElementById("metricVolumeLength").value === "" ||
+    document.getElementById("metricVolumeWidth").value === "" ||
+    document.getElementById("metricVolumeHeight").value === "" ||
+    document.getElementById("metricVolumeQuantity").value === "" ||
+    !Number.isFinite(length) ||
+    !Number.isFinite(width) ||
+    !Number.isFinite(height) ||
+    !Number.isInteger(quantity) ||
+    length <= 0 ||
+    width <= 0 ||
+    height <= 0 ||
+    quantity <= 0
+  ) {
+    result.textContent = "Ingresá medidas y una cantidad válidas.";
+    return;
+  }
+
+  const total = length * width * height * quantity;
+
+  result.textContent =
+    "Volumen total: " + total.toLocaleString("es-PY", {
+      maximumFractionDigits: 3
+    }) + " m³";
 }
